@@ -1,40 +1,46 @@
-Senior Project Proposal (Replace with Project Name)
+Hunting Stand Project
 ===================================================
 
-**Student Name(s)**: Ada Lovelace (put your name here, followed by two spaces)  
-**Degree and Major**: B.S. in Cybersecurity (put your name here, followed by two spaces)  
-**Project Advisor Name**: Dr. Faulkner (put your name here, followed by two spaces)  
-**Expected Graduation Date**: May 2040 (put the correct month and day here)
+**Student Name(s)**: Andrew Taylor (put your name here, followed by two spaces)  
+**Degree and Major**: B.A. Applied Computing Cybersecurity (put your name here, followed by two spaces)  
+**Project Advisor Name**: Dr. Hayes (put your name here, followed by two spaces)  
+**Expected Graduation Date**: Spring 2027 (put the correct month and day here)
 
 
 Problem Statement
 -----------------
 
-The problem statement goes here.
+When planning a hunting trip, there is no sure fire way to ensure you will see
+anything, much less ensure you will be able to harvest an animal. At most you can 
+increase your odds. One of the best ways to increase your odds of encountering
+an animal is to choose ideal weather conditions.
 
 
 Project Description
 -------------------
 
-The project description goes here.
+This project will collect and analyze weather data, primarily wind data, to 
+determine the best hunting locations in a given area.
 
 
 Proposed Implementation Language(s) 
 -----------------------------------
 
-Languages go here.
+Still Determining:
+Python, HTML, CSS, Javascript, Meteor
 
 
 Libraries, Packages, Development Kits, etc., to be used in the proposed implementation language(s)
 --------------------------------------------------------------------------------------------------
 
-The supporting libraries go here.
+Still Determining:
+Mysql, Flask, MapBox JS, Requests, Pure.css, Bootstrap, Node.JS
 
 
 Additional Software/Equipment Needed
 ------------------------------------
 
-List any hardware needed and software for planning, development (e.g., your IDE), testing, and deploying/distributing.
+Still Determining:
 
 Alternative Solutions and Rationale 🔍
 --------------------------------------
@@ -43,7 +49,7 @@ Alternative Solutions and Rationale 🔍
 
 ### Alternative 1
 - **Description**:  
-  _(Briefly describe this solution or approach.)_
+  Meteor Stack
 - **Pros**:  
   - _(List strengths or advantages)_
 - **Cons**:  
@@ -69,7 +75,9 @@ Alternative Solutions and Rationale 🔍
 Personal Motivation
 -------------------
 
-Personal motivation goes here.
+I deer hunt during the spring/winter and there is always a lot of planning that
+goes into each aspect of a hunt. Planning a successful hunt relies on having 
+a variety of up to date and accurate information. 
 
 Outline of Future Research Efforts
 ----------------------------------
