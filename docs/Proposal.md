@@ -49,12 +49,19 @@ Alternative Solutions and Rationale 🔍
 
 ### Alternative 1
 - **Description**:  
-  Meteor Stack
+  Physical Weather Station
 - **Pros**:  
   - _(List strengths or advantages)_
+  - Very accurate local weather readings
+  - Less reliant on APIs
+  - Cool Factor
 - **Cons**:  
   - _(List weaknesses or limitations)_
-
+  - Weather readings are only accurate within a certain radius of the station.
+  - Scalibility is limited by needing physical weather stations at each location.
+  - Maintenance / Troubleshooting of the weather station hardware.
+  - Weather stations at geographically remote hunting locations are less feasible
+  - Communicating with a station is limited to LoRaWAN and or Satelite data transfer, effecting performance and cost.
 ### Alternative 2
 - **Description**:  
   _(Briefly describe this solution or approach.)_
@@ -89,18 +96,18 @@ Schedule 📅
 
 > Update the dates and add your tasks by replacing the examples. Remove this note.
 
-*   Spring 2039 - CSCI 497
-    -   January 26 - 
-    -   February 9 - 
-    -   February 23 - 
-    -   March 8 - 
-    -   March 22 - Send First-Draft of the Requirements Document to advisor for feedback
-    -   April 5 - 
+*   Fall 2025 - CSCI 497
+    -   October 1 - Meet with Dr. Hayes and finish final proposal details. 
+    -   October 6 - Submit Proposal draft 
+    -   October 27 - Have general list of project requirements
+    -   November 10 - 
+    -   November 25 - Turn in completed Proposal and Requirements Document
+    -   December 8 - Make final corrections and changes
 
 *   Summer 2040 - Independent/Optional Project Work
     -   June 1 - 
 
-*   Fall 2039 - CSCI 498
+*   Spring 2026 - CSCI 498
     -   October 20 - 
     -   October 27 - 
     -   November 3 - 
@@ -108,7 +115,7 @@ Schedule 📅
     -   November 17 - 
     -   November 20 - 
 
-*   Spring 2040 - CSCI 499 (more details will be added here once you are closer)
+*   Fall 2026 - CSCI 499 (more details will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
     -   Week 5 - Evaluate test results
     -   Week 6-10 - Apply updates and bug fixes based on the results
