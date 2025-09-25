@@ -27,14 +27,14 @@ Proposed Implementation Language(s)
 -----------------------------------
 
 Still Determining:
-Python, HTML, CSS, Javascript, Meteor
+Python, HTML, CSS, Javascript, Meteor SQLite
 
 
 Libraries, Packages, Development Kits, etc., to be used in the proposed implementation language(s)
 --------------------------------------------------------------------------------------------------
 
 Still Determining:
-Mysql, Flask, MapBox JS, Requests, Pure.css, Bootstrap, Node.JS
+Flask, MapBox JS, Requests, Pure.css, Bootstrap, Node.JS
 
 
 Additional Software/Equipment Needed
@@ -50,6 +50,8 @@ Alternative Solutions and Rationale 🔍
 ### Alternative 1
 - **Description**:  
   Physical Weather Station
+  _(Briefly describe this solution or approach.)_
+  
 - **Pros**:  
   - _(List strengths or advantages)_
   - Very accurate local weather readings
@@ -63,12 +65,17 @@ Alternative Solutions and Rationale 🔍
   - Weather stations at geographically remote hunting locations are less feasible
   - Communicating with a station is limited to LoRaWAN and or Satelite data transfer, effecting performance and cost.
 ### Alternative 2
-- **Description**:  
+- **Description**:
+- Meteor Stack
   _(Briefly describe this solution or approach.)_
+  
 - **Pros**:  
   - _(List strengths or advantages)_
+  - All-In-One stack
 - **Cons**:  
   - _(List weaknesses or limitations)_
+  - Spotty development could lead to future issues with scalabiliity
+  - Meteor has a small userbase, less online guides and documentation
 
 ### Chosen Solution and Rationale
 - **Chosen Solution**:  
