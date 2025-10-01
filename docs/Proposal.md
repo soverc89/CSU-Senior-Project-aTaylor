@@ -27,7 +27,7 @@ Proposed Implementation Language(s)
 -----------------------------------
 
 Still Determining:
-Python, HTML, CSS, Javascript, Meteor SQLite
+Python, HTML, CSS, Javascript, SQLite
 
 
 Libraries, Packages, Development Kits, etc., to be used in the proposed implementation language(s)
@@ -117,10 +117,10 @@ Schedule 📅
 *   Spring 2026 - CSCI 498
     -   October 20 - 
     -   October 27 - 
-    -   November 3 - 
+    -   November 3 - Draft Test Plan
     -   November 10 - 
     -   November 17 - 
-    -   November 20 - 
+    -   November 20 - Minimal Viable Product
 
 *   Fall 2026 - CSCI 499 (more details will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
