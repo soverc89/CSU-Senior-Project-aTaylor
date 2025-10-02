@@ -10,37 +10,34 @@ Hunting Stand Project
 Problem Statement
 -----------------
 
-When planning a hunting trip, there is no sure fire way to ensure you will see
-anything, much less ensure you will be able to harvest an animal. At most you can 
-increase your odds. One of the best ways to increase your odds of encountering
-an animal is to choose ideal weather conditions.
+When planning a hunting trip, success is never guaranteed. Hunters face the uncertainty of whether they
+will even see an animal, much less harvest one. The challenge lies in the unpredictable nature of wildlife,
+making it dificult to ensure a sucessful hunt. Although no hunting strategy can guarantee results, hunters can 
+increase their chances of encountering game by carefully selecting ideal weather conditions.
 
 
 Project Description
 -------------------
 
 This project will collect and analyze weather data, primarily wind data, to 
-determine the best hunting locations in a given area.
+determine the best times and locations to hunt in a given area set by the user.
 
 
 Proposed Implementation Language(s) 
 -----------------------------------
 
-Still Determining:
 Python, HTML, CSS, Javascript, SQLite
 
 
 Libraries, Packages, Development Kits, etc., to be used in the proposed implementation language(s)
 --------------------------------------------------------------------------------------------------
 
-Still Determining:
 Flask, MapBox JS, Requests, Pure.css, Bootstrap, Node.JS
 
 
 Additional Software/Equipment Needed
 ------------------------------------
 
-Still Determining:
 
 Alternative Solutions and Rationale 🔍
 --------------------------------------
