@@ -45,9 +45,9 @@ Alternative Solutions and Rationale 🔍
 > **Purpose**: Describe at least two alternative solutions or approaches to your project. Compare these with your chosen solution based on relevant criteria (e.g., feasibility, scalability, cost, performance, usability). Explain why you selected your final approach.
 
 ### Alternative 1
-- **Description**:  
   Physical Weather Station
-  _(Briefly describe this solution or approach.)_
+- **Description**:  
+  This alternative would use a pre-built or custom-built weather station in order to collect real-time weather data instead of relying on weather data APIs.
   
 - **Pros**:  
   - _(List strengths or advantages)_
@@ -62,17 +62,19 @@ Alternative Solutions and Rationale 🔍
   - Weather stations at geographically remote hunting locations are less feasible
   - Communicating with a station is limited to LoRaWAN and or Satelite data transfer, effecting performance and cost.
 ### Alternative 2
+  Meteor Tech Stack
 - **Description**:
-- Meteor Stack
-  _(Briefly describe this solution or approach.)_
+  This alternative proposes using the Meteor framework, a all in one JavaScript stack, to build the web application instead of a   Python based stack.
   
 - **Pros**:  
   - _(List strengths or advantages)_
-  - All-In-One stack
+  - Frontend, Backend, and database are integrated together
+  - Data syncrhonization/Live updates are built in.
 - **Cons**:  
   - _(List weaknesses or limitations)_
   - Spotty development could lead to future issues with scalabiliity
   - Meteor has a small userbase, less online guides and documentation
+  - Less flexible, forced to use the conventions of the Meteor framework
 
 ### Chosen Solution and Rationale
 - **Chosen Solution**:  
@@ -95,6 +97,15 @@ Outline of Future Research Efforts
 
 (What do you need to learn or figure out to complete this project? What tasks are you going to do the do?)
 
+Frontend
+ - 
+
+Web Hosting
+
+Maps and JavaScript Integration
+
+Weather APIl
+
 Schedule 📅
 -----------
 
@@ -104,27 +115,30 @@ Schedule 📅
     -   October 1 - Meet with Dr. Hayes and finish final proposal details. 
     -   October 6 - Submit Proposal draft 
     -   October 27 - Have general list of project requirements
-    -   November 10 - 
+    -   November 10 - Work on Requirements Document
     -   November 25 - Turn in completed Proposal and Requirements Document
     -   December 8 - Make final corrections and changes
 
-*   Summer 2040 - Independent/Optional Project Work
-    -   June 1 - 
-
 *   Spring 2026 - CSCI 498
-    -   October 20 - 
-    -   October 27 - 
-    -   November 3 - Draft Test Plan
-    -   November 10 - 
-    -   November 17 - 
-    -   November 20 - Minimal Viable Product
+    -   Week 1-4 - Begin core development: set up basic application structure, web framework, and database
+    -   Week 5-6 - Start building out core features of the product
+    -   Week 7 - Draft Test Plan
+    -   Week 8-9 - Run initial tests and debug
+    -   Week 10-11 - Continue to iron out core features 
+    -   Week 12-13 - Work on Minimal Viable Product
+    -   Week 14 - Complete Minimal Viable Product
+ 
+*   Summer 2026 - Independent/Optional Project Work
+    -   June 1 - Work on Viable Product to make it less Minimal
 
 *   Fall 2026 - CSCI 499 (more details will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
-    -   Week 5 - Evaluate test results
+    -   Week 5 - Elvaluate test results
     -   Week 6-10 - Apply updates and bug fixes based on the results
     -   Week 8 - Complete the first 4 chapters of the defense documentation.
-    -   Add the rest…
+    -   Week 9-12 - Finish Defense Documentation 
+    -   Week 13 - Work on and Practice Project Presentation, make final adjustments to project and documentation
+    -   Week 14 - Project Presentation
 
 
 References 📚
