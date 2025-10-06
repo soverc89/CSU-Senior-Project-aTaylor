@@ -74,7 +74,7 @@ Alternative Solutions and Rationale 🔍
 - **Pros**:  
   - _(List strengths or advantages)_
   - Frontend, Backend, and database are integrated together
-  - Data syncrhonization/Live updates are built in.
+  - Data synchronization/Live updates are built in.
 - **Cons**:  
   - _(List weaknesses or limitations)_
   - Spotty development could lead to future issues with scalabiliity
@@ -90,11 +90,11 @@ Alternative Solutions and Rationale 🔍
 
 |          | Physical Weather Station | Meteor Stack | Chosen Solution |
 |----------|--------------------------|--------------|-----------------|
-| Feasibility | A physical weather station is not feasible given the scope of this project. Doing meaningful testing with a physical station would require many trips out to distant locations. Not to mention maintanance, troubleshooting, and debugging the physical hardware while it is physically several hours away| | |
-| Cost | The cost of a durable and accurate pre-built or custom-built weather station can cost hundreds of dollars each. Access to a 3D printer can bring the price down, but at that point it starts to move beyond the scope of this project.| | |
-| Scalability | Scalability is the biggest weakness of going with a physical weather station. A phyiscal station only provides accurate weather data for the specific area around the station, decreasing in quality the farther you move away. For that reason, each additional hunting location would require another weather station, and weather information about that location could not be gathered until the station is set up. | | |
-| Performance | Performance is where a physical weather station shines. Once set up and running a physical weather station would provide the most accurate and up to date weather data for a given area. | | |
-| Usability | A physical weather station adds a great deal of extra testing and set up. It also adds another major point of failure into the system, where if a component in the physical station fails, the entire application will fail, rendering it useless to the user. | | |
+| Feasibility | A physical weather station is not feasible given the scope of this project. Doing meaningful testing with a physical station would require many trips out to distant locations. Not to mention maintanance, troubleshooting, and debugging the physical hardware while it is physically several hours away| A Meteor stack is a fairly feasible option for this project, especially with it's built in data synchronization. However due to the spotty development, small userbase, and limited documentation, going with this option introduces a steap learning curve that decreases it's feasibility.| |
+| Cost | The cost of a durable and accurate pre-built or custom-built weather station can cost hundreds of dollars each. Access to a 3D printer can bring the price down, but at that point it starts to move beyond the scope of this project.| The only extra cost this alternative poses is the amount of additional time and effort it could take to learn.| |
+| Scalability | Scalability is the biggest weakness of going with a physical weather station. A phyiscal station only provides accurate weather data for the specific area around the station, decreasing in quality the farther you move away. For that reason, each additional hunting location would require another weather station, and weather information about that location could not be gathered until the station is set up. | Due to the inconsistant development of Meteor, scaling the project larger as time goes on could be limited by the slow development time. | |
+| Performance | Performance is where a physical weather station shines. Once set up and running a physical weather station would provide the most accurate and up to date weather data for a given area. | Using Meteor comes with Live Web Updates and Data Synchronization, probably its biggest strength| |
+| Usability | A physical weather station adds a great deal of extra testing and set up. It also adds another major point of failure into the system, where if a component in the physical station fails, the entire application will fail, rendering it useless to the user. | From my research, Meteor is not the most intuitive framework to learn. In addition, it is limited in terms of guides and documentation.| |
 
   
 
