@@ -38,6 +38,11 @@ Flask, MapBox JS, Requests, Pure.css, Bootstrap, Node.JS
 Additional Software/Equipment Needed
 ------------------------------------
 
+Equipment:
+  Personal Laptop for Development, Personal Phone/Laptop for Testing, Personal Laptop/Raspberry PI to Host Web Server
+
+Software: 
+  Visual Studio Code for Project Coding
 
 Alternative Solutions and Rationale 🔍
 --------------------------------------
@@ -79,8 +84,19 @@ Alternative Solutions and Rationale 🔍
 ### Chosen Solution and Rationale
 - **Chosen Solution**:  
   _(Restate your selected solution.)_
+  My chosen solution for solving the problem statement is to use a standard Python stack that takes advantage of the many powerful weather API's already available.
 - **Rationale**:  
   _(Justify your choice in comparison with the alternatives. Highlight key reasons for its selection.)_
+
+|          | Physical Weather Station | Meteor Stack | Chosen Solution |
+|----------|--------------------------|--------------|-----------------|
+| Feasibility | | | |
+| Cost | | | |
+| Scalability | | | |
+| Performance | | | |
+| Usability | | | |
+
+  
 
 > 💡 *Tip: Consider using a comparison table to evaluate trade-offs across multiple criteria such as feasibility, performance, scalability, cost, and usability.*
 
