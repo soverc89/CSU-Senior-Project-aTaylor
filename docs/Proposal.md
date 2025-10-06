@@ -90,7 +90,7 @@ Alternative Solutions and Rationale 🔍
 
 |          | Physical Weather Station | Meteor Stack | Chosen Solution |
 |----------|--------------------------|--------------|-----------------|
-| Feasibility | A physical weather station is not feasible given the scope of this project. Doing meaningful testing with a physical station would require many trips out to distant locations.| | |
+| Feasibility | A physical weather station is not feasible given the scope of this project. Doing meaningful testing with a physical station would require many trips out to distant locations. Not to mention maintanance, troubleshooting, and debugging the physical hardware while it is physically several hours away| | |
 | Cost | | | |
 | Scalability | | | |
 | Performance | | | |
