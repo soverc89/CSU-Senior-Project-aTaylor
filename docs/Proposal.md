@@ -113,14 +113,18 @@ Outline of Future Research Efforts
 
 (What do you need to learn or figure out to complete this project? What tasks are you going to do the do?)
 
-Frontend
- - 
+Frontend:
+  While I have done some basic frontend development in previous classes, I am still unfamiliar with a lot of it. That includes HTML, CSS, and Javascript.
 
-Web Hosting
+Web Hosting:
+  What I have researched so far with Flask does not seem too terribly complicated, however, I will still need to figureout the best method of handling asynchronous data handling.
 
-Maps and JavaScript Integration
+Maps and JavaScript Integration:
+  I am unsure at this point whether using a map interface will be necessary for the scope of this project. If it is possible to incorporate into my project I will. At that point I will need
+  to figure out what the best mapping API is best suited for the project along with how to integrate it into the web application.
 
-Weather APIl
+Weather APIs
+  I need to figure out which API's I will be using. The Weather.gov API is completetly free but it is difficult to parse out only the data you need. The Openweathermap API has more tools to retrieve the specific data you need, but it requires an account and there is a limit to the amount of api calls you can make in a day. I'll need to weigh my options and figure out which is suited to the current project.
 
 Schedule 📅
 -----------
