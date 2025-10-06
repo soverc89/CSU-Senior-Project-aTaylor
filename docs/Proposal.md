@@ -91,10 +91,10 @@ Alternative Solutions and Rationale 🔍
 |          | Physical Weather Station | Meteor Stack | Chosen Solution |
 |----------|--------------------------|--------------|-----------------|
 | Feasibility | A physical weather station is not feasible given the scope of this project. Doing meaningful testing with a physical station would require many trips out to distant locations. Not to mention maintanance, troubleshooting, and debugging the physical hardware while it is physically several hours away| | |
-| Cost | | | |
-| Scalability | | | |
-| Performance | | | |
-| Usability | | | |
+| Cost | The cost of a durable and accurate pre-built or custom-built weather station can cost hundreds of dollars each. Access to a 3D printer can bring the price down, but at that point it starts to move beyond the scope of this project.| | |
+| Scalability | Scalability is the biggest weakness of going with a physical weather station. A phyiscal station only provides accurate weather data for the specific area around the station, decreasing in quality the farther you move away. For that reason, each additional hunting location would require another weather station, and weather information about that location could not be gathered until the station is set up. | | |
+| Performance | Performance is where a physical weather station shines. Once set up and running a physical weather station would provide the most accurate and up to date weather data for a given area. | | |
+| Usability | A physical weather station adds a great deal of extra testing and set up. It also adds another major point of failure into the system, where if a component in the physical station fails, the entire application will fail, rendering it useless to the user. | | |
 
   
 
