@@ -20,7 +20,7 @@ Dependencies:
 
 Functional
 ----------------
-
+## Should this one be split in half?
 Requirment #1
   Requirement Type: Functional
   Description: The user will be able to create, edit, and delete stands. Each stand will have a name, set of coordinates, and stand degree associated with it.
@@ -53,7 +53,8 @@ Fit Criterion: The user can successfully remove an existing stand from their lis
 Priority: Necessary
 Dependencies: 
 
-Requirment #5 ****************
+## What makes this one different than requirement 1?, Is it necessary to have this requirement as well as 6.
+Requirment #5 
 Requirement Type: Functional
 Description: The user will be able to manually create stands by entering in relevant stand information into a form interface.
 Rationale: So that the user is able to create a new stand location through an easy to use form.
@@ -61,9 +62,10 @@ Fit Criterion:
 Priority: Necessary
 Dependencies: 
 
+## Depends on what I do with 5
 Requirment # 6
 Requirement Type: Functional
-Description: The User will be able to manage their stands through a map interface. # Might need to come back to these
+Description: The User will be able to manage their stands through a map interface.
 Rationale: So that the user is able to create a new stand location through a map interface and form.
 Fit Criterion:
 Priority: Necessary
@@ -71,10 +73,10 @@ Dependencies:
 
 Requirment #7
 Requirement Type: Functional
-Description: The user will be able to manage stands through a basic UI
-Rationale:
+Description: The user will be able to manage and edit stands through a basic and easy to use UI.
+Rationale: So that the user can easily view and manage their stands.
 Fit Criterion:
-Priority:
+Priority: Necessary
 Dependencies: 
 
 Requirment #8
@@ -82,7 +84,7 @@ Requirement Type: Look and Feel?
 Description: A dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
 Rationoale:
 Fit Criterion:
-Priority:
+Priority: Necessary
 Dependencies: 
 
 Requirment #9
