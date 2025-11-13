@@ -22,11 +22,17 @@ Functional
 ----------------
 
 Requirment #1
+
 Requirement Type: Functional
+
 Description: The user will be able to create, edit, and delete stands. Each stand will have a name, set of coordinates, and stand degree associated with it.
+
 Rationale: So that the user is able to have full control over their list of stands and their associated information.
+
 Fit Criterion: The user can successfully create a a new stand, edit an existing stands data, and delete a stand. Any additions or changes made will be reflected immediately in the user's stand list.
+
 Priority: Necessary
+
 Dependencies: Requirements 2-4
 
 Requirment #2
