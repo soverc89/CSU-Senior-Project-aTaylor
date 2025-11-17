@@ -58,8 +58,16 @@ Requirment #5
 Requirement Type: Functional
 Description: The user will be able to manually create stands by entering in relevant stand information into a form interface.
 Rationale: So that the user is able to create a new stand location through an easy to use form.
-Fit Criterion:
+Fit Criterion: The user can successfully create a stand by navigating to the stand creation form, entering in the releveant stand data, and clicking "Create Stand". The users stand list will be updated immediately
 Priority: Necessary
+Dependencies:
+
+Requirment #
+Requirement Type:
+Description: Within the form interface, the user will have the option to fill the coordinate part of the form through a "Use my location" button.
+Rationale: If they are present at the stand, some users might find it more accessible to have coordinate data populated automatically using their devices geolocation. 
+Fit Criterion: Assuming the web app has proper permissions, the user will be able to click the "Use My Location" button on the Stand form and have the coordinate data form autofilled by requesting the devices geolocation in longitude/latitude format.
+Priority: Recommended
 Dependencies: 
 
 ## Depends on what I do with 5
@@ -67,21 +75,29 @@ Requirment # 6
 Requirement Type: Functional
 Description: The User will be able to manage their stands through a map interface.
 Rationale: So that the user is able to create a new stand location through a map interface and form.
-Fit Criterion:
+Fit Criterion: The user will be able to click a map interface
 Priority: Necessary
 Dependencies: 
 
 Requirment #7
 Requirement Type: Functional
 Description: The user will be able to manage and edit stands through a basic and easy to use UI.
-Rationale: So that the user can easily view and manage their stands.
-Fit Criterion:
+Rationale: So that the user can easily edit existing stands in their list.
+Fit Criterion: From the user's stand list page the will be able to click a "Manage Stands" button. Which will navigate them to a page where they can edit existing stands belonging to the user. Any changes made to a stand will be immediately reflected in their stand list.
 Priority: Necessary
+Dependencies: 
+
+Requirment #
+Requirement Type: 
+Description: Within the stand editor UI, the user will be able to a stands coordinate data using a "Find my Location" button
+Rationale: If they are present at the stand, some users might find it more accessible to have coordinate data populated automatically using their device's geolocation. 
+Fit Criterion: The user can successfully populate the stand coordinate form entry by using the "Find my Location" button. Any changes made to a stands data will be be immediately reflected in the user's stand list.
+Priority: Recommended
 Dependencies: 
 
 Requirment #8
 Requirement Type: Look and Feel?
-Description: A dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
+Description: The user's homepage/dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
 Rationoale:
 Fit Criterion:
 Priority: Necessary
@@ -154,6 +170,14 @@ Priority:
 Dependencies: 
 
 **Usability**
+
+Requirment #
+Requirement Type:
+Description: 
+Rationale:
+Fit Criterion:
+Priority:
+Dependencies: 
 
 **Performance**
 
