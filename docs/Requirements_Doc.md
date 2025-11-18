@@ -19,30 +19,30 @@ Dependencies:
 
 Functional
 ----------------
+
 ## Should this one be split in half?
-Requirment #1
-  Requirement Type: Functional
-  Description: The user will be able to create, edit, and delete stands. Each stand will have a name, set of coordinates, and stand degree associated with it.
-  Rationale: So that the user is able to have full control over their list of stands and their associated information.
-  Fit Criterion: The user can successfully create a a new stand, edit an existing stands data, and delete a stand. Any additions or changes made will be reflected immediately in the user's stand list.
-  Priority: Necessary
-  Dependencies: Requirements 2-4
 
-Requirment #2
-Requirement Type: Functional
-Description: The User will be able to create stands.
-Rationale: So that the user can add new stand locations to their list.
-Fit Criterion: The user can successfully create a new stand in the system. Any additions made will be reflected immediately in the user's stand list.
-Priority: Necessary
-Dependencies: 
+1. Requirement Type: Functional  
+  -  Description: The user will be able to create, edit, and delete stands. Each stand will have a name, set of coordinates, and stand degree associated with it.
+  -  Rationale: So that the user is able to have full control over their list of stands and their associated information.
+  -  Fit Criterion: The user can successfully create a a new stand, edit an existing stands data, and delete a stand. Any additions or changes made will be reflected immediately in the user's stand list.
+  -  Priority: Necessary
+  -  Dependencies: Requirements 2-4
 
-Requirment #3
-Requirement Type: Functional
-Description: The user will be able to edit stands.
-Rationale: So that the user can modify the information of their current stands.
-Fit Criterion: The user can successfully edit an existing stand's information. Any changes made will be reflected immediately in the user's stand list.
-Priority: Necessary
-Dependencies: 
+2. Requirement Type: Functional  
+  Description: The User will be able to create stands.  
+  Rationale: So that the user can add new stand locations to their list.  
+  Fit Criterion: The user can successfully create a new stand in the system. Any additions made will be reflected immediately in the user's stand list.  
+  Priority: Necessary  
+  Dependencies: 
+
+3. Requirement Type: Functional
+
+  >  Description: The user will be able to edit stands.  
+  >  Rationale: So that the user can modify the information of their current stands.  
+  >  Fit Criterion: The user can successfully edit an existing stand's information. Any changes made will be reflected immediately in the user's stand list.  
+  >  Priority: Necessary  
+  >  Dependencies: 
 
 Requirment #4 
 Requirement Type: Functional
