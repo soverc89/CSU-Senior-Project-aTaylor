@@ -217,12 +217,27 @@ Dependencies:
 
 Requirment #13
 Requirement Type: Security
-Description: The User will maybe have a login?????? # work on this one
-Rationale:
-Fit Criterion:
-Priority:
+Description: The system will store all user passwords using a secure hashing algorithm.
+Rationale: To protect user credentials from a data breach or an unauthorized database access
+Fit Criterion: Inspecting the datbase of user information will verify that the password field contains hashed strings rather than the user's actual password.
+Priority: Necessary
 Dependencies: 
 
+Requirment #
+Requirement Type: Security
+Description: The system will require users to authenticate via a login page using a valid username/email and password before accessing the dashboard or stand management features.
+Rationale: To prevent unauthorized users from acceessing the application and user data
+Fit Criterion: A user entering valid credentials is redirected to their account and dashboard. A user entering invalid credentials recieves an error message and remains on the login page.
+Priority: Necessary
+Dependencies: 
+
+Requirment #
+Requirement Type: Security
+Description: The System will restrict data access so that a logged in user can only view, edit, or delete stands associated with their specific User ID.
+Rationale: To ensure user privacy and data integrity, and prevent users from modifying or viewing other users' data.
+Fit Criterion: If a user attempts to access the data of another user, the system denies access.
+Priority: Necessary.
+Dependencies: 
 
 
 
@@ -238,6 +253,5 @@ Dependencies:
 
 
 
-</pre>
 
 
