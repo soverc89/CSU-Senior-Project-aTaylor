@@ -30,27 +30,26 @@ Functional
     -  Dependencies: Requirements 2-4
 
 2. Requirement Type: Functional  
-  Description: The User will be able to create stands.  
-  Rationale: So that the user can add new stand locations to their list.  
-  Fit Criterion: The user can successfully create a new stand in the system. Any additions made will be reflected immediately in the user's stand list.  
-  Priority: Necessary  
-  Dependencies: 
+    -  Description: The User will be able to create stands.  
+    -  Rationale: So that the user can add new stand locations to their list.  
+    -  Fit Criterion: The user can successfully create a new stand in the system. Any additions made will be reflected immediately in the user's stand list.  
+    -  Priority: Necessary  
+    -  Dependencies: 
 
 3. Requirement Type: Functional
 
-  >  Description: The user will be able to edit stands.  
-  >  Rationale: So that the user can modify the information of their current stands.  
-  >  Fit Criterion: The user can successfully edit an existing stand's information. Any changes made will be reflected immediately in the user's stand list.  
-  >  Priority: Necessary  
-  >  Dependencies: 
+    -  Description: The user will be able to edit stands.
+    -  Rationale: So that the user can modify the information of their current stands.  
+    -  Fit Criterion: The user can successfully edit an existing stand's information. Any changes made will be reflected immediately in the user's stand list.  
+    -  Priority: Necessary  
+    -  Dependencies: 
 
-Requirment #4 
-Requirement Type: Functional
-Description: The user will be able to delete stands.
-Rationale: So that the user can remove unwanted or unnecessary stands in their stand list.
-Fit Criterion: The user can successfully remove an existing stand from their list. Any removals made will be reflected immediately in the user's stand list. 
-Priority: Necessary
-Dependencies: 
+4. Requirement Type: Functional
+    -  Description: The user will be able to delete stands.
+    -  Rationale: So that the user can remove unwanted or unnecessary stands in their stand list.
+    -  Fit Criterion: The user can successfully remove an existing stand from their list. Any removals made will be reflected immediately in the user's stand list. 
+    -  Priority: Necessary
+    -  Dependencies: 
 
 ## What makes this one different than requirement 1?, Is it necessary to have this requirement as well as 6.
 Requirment #5 
@@ -126,6 +125,14 @@ Fit Criterion: The system can correctly manipulate weather data so that it displ
 Priority: Necessary
 Dependencies:
 
+Requirment #
+Requirement Type: Functional
+Description: The dashboard will allow the user to select a future data and time for up to 7 days in advance to view projected stand grades. When a future time is selected, the system will recalculate stand rankings based on the weather forecast for that specific timestamp.
+Rationale: This functionality gives users the ability to plan hunting trips ahead of time.
+Fit Criterion: (A) The user changes the dashboard time to Wednesday at 7:00 AM. (B) The system updates the dashboard to show stand grades based on Wednesday mornings' wind forecast and not the current one. (C) The user is prevented from selecting a date outside of a week.
+Priority: Recommended
+Dependencies: 
+
 Requirment #19
 Requirement Type: Functional
 Description: I may or may not add additional grading features (being able to plan for months ahead of time)
@@ -141,6 +148,7 @@ Rationale:
 Fit Criterion:
 Priority:
 Dependencies:
+
 
 **Look and Feel**
 
