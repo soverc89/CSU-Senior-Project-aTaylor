@@ -95,35 +95,35 @@ Priority: Recommended
 Dependencies: 
 
 Requirment #8
-Requirement Type: Look and Feel?
+Requirement Type: Usability
 Description: The user's homepage/dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
-Rationoale:
-Fit Criterion:
+Rationale: Displaying a users stands in a graded and colored format makes it easy for the user to check their stands at a glance.
+Fit Criterion: When viewing the user's dashboard the display for for stands will correctly rank them by grade and color them appropriatly based on their given grade.
 Priority: Necessary
 Dependencies: 
 
 Requirment #9
 Requirement Type: Functional
 Description: The System uses OpenWeatherMap/Weather.gov API to request windage data local to the user.
-Rationale:
-Fit Criterion:
-Priority:
+Rationale: For the system to display accurate and timely data for the user, it needs to pull updated data for a user's location.
+Fit Criterion: The system can succesfully request accurate data from the API for a users location. If it cannot it will display a relevant error message.
+Priority: Necessary
 Dependencies: 
 
 Requirment #10
-Requirement Type: Functional Performance?
-Description: Relevant weather information will be updated every 6-12 hours.
-Rationale:
-Fit Criterion:
-Priority:
+Requirement Type: Performance
+Description: If needed, relevant weather information will be updated every 6-12 hours.
+Rationale: Typically, Weather API Providers update their weather data every 6-12 hours. If there is a present need in the system to update weather data for a location, its weather data will be updated automatically without prompting by the user.
+Fit Criterion: The system can successfully make an API call for updated weather data. If unsuccessful, the system will provide a relevant error message.
+Priority: Necessary
 Dependencies: 
 
 Requirment #12
 Requirement Type: Functional
 Description: The system generates a stand grade by comparing a stand's degree with the most recent wind data.
-Rationale:
-Fit Criterion:
-Priority:
+Rationale: A grading system for stands is an intuitive way for the user to know which stands are advantagous.
+Fit Criterion: The system can correctly manipulate weather data so that it displays an accurate grade for a stand. Passes tests?
+Priority: Necessary
 Dependencies:
 
 Requirment #19
