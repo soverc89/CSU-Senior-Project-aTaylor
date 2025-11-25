@@ -127,7 +127,8 @@ Functional
     -  Dependencies:
 
 
-**Look and Feel**
+Look and Feel
+-------------------
 
 16. Requirement Type: Look and Feel?
     -  Description: I may or may not include a calendar function
@@ -150,7 +151,8 @@ Functional
     -  Priority:
     -  Dependencies: 
 
-**Usability**
+Usability
+------------------
 
 19. Requirement Type:
     -  Description: 
@@ -159,7 +161,8 @@ Functional
     -  Priority:
     -  Dependencies: 
 
-**Performance**
+Performance
+----------------
 
 20. Requirement Type: Performance
     -  Description: If needed, relevant weather information will be updated every 6-12 hours.
@@ -197,7 +200,8 @@ Functional
     -  Priority:
     -  Dependencies: 
 
-**Security**
+Security
+----------------
 
 25. Requirement Type: Security
     -  Description: The system will store all user passwords using a secure hashing algorithm.
