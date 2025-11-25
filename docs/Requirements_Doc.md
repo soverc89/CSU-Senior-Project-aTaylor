@@ -129,99 +129,91 @@ Functional
 
 **Look and Feel**
 
-Requirment #16
-Requirement Type: Look and Feel?
-Description: I may or may not include a calendar function
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+16. Requirement Type: Look and Feel?
+    -  Description: I may or may not include a calendar function
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
-Requirment #17
-Requirement Type: Look and Feel
-Description: I may or may not include a solar calendar
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+17. Requirement Type: Look and Feel
+    -  Description: I may or may not include a solar calendar
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
-Requirment #18
-Requirement Type: Look and Feel
-Description: I may or may not include a lunar calendar
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+18. Requirement Type: Look and Feel
+    -  Description: I may or may not include a lunar calendar
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
 **Usability**
 
-Requirment #
-Requirement Type:
-Description: 
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+19. Requirement Type:
+    -  Description: 
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
 **Performance**
 
-12. Requirement Type: Performance
+20. Requirement Type: Performance
     -  Description: If needed, relevant weather information will be updated every 6-12 hours.
     -  Rationale: Typically, Weather API Providers update their weather data every 6-12 hours. If there is a present need in the system to update weather data for a location, its weather data will be updated automatically            without prompting by the user.
     -  Fit Criterion: The system can successfully make an API call for updated weather data. If unsuccessful, the system will provide a relevant error message.
     -  Priority: Necessary
     -  Dependencies: 
 
-Requirment #14
-Requirement Type: Performance
-Description: Data of some sort will have to be saved for the users.
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+21. Requirement Type: Performance
+    -  Description: Data of some sort will have to be saved for the users.
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
-Requirment 15
-Requirement Type: Performance
-Description: I will store weather data of some sort. Some long-term, some short term.
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+22. Requirement Type: Performance
+    -  Description: I will store weather data of some sort. Some long-term, some short term.
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
-Requirment #
-Requirement Type:
-Description: Two options (1/2) The system keeps track of weather locations and updates those at a set interval and that is what the user pulls from. Or, the weather for an area only updates once a user needs it
-  then that information is cached for other users.
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+23. Requirement Type:
+    -  Description: Two options (1/2) The system keeps track of weather locations and updates those at a set interval and that is what the user pulls from. Or, the weather for an area only updates once a user needs it
+       then that information is cached for other users.
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
-Requirment #11
-Requirement Type: Constraint ??
-Description: The project will be limited to being a web application.
-Rationale:
-Fit Criterion:
-Priority:
-Dependencies: 
+24. Requirement Type: Constraint ??
+    -  Description: The project will be limited to being a web application.
+    -  Rationale:
+    -  Fit Criterion:
+    -  Priority:
+    -  Dependencies: 
 
 **Security**
 
-99. Requirement Type: Security
+25. Requirement Type: Security
     -  Description: The system will store all user passwords using a secure hashing algorithm.
     -  Rationale: To protect user credentials from a data breach or an unauthorized database access
     -  Fit Criterion: Inspecting the datbase of user information will verify that the password field contains hashed strings rather than the user's actual password.
     -  Priority: Necessary
     -  Dependencies: 
 
-99. Requirement Type: Security
+26. Requirement Type: Security
     -  Description: The system will require users to authenticate via a login page using a valid username/email and password before accessing the dashboard or stand management features.
     -  Rationale: To prevent unauthorized users from acceessing the application and user data
     -  Fit Criterion: A user entering valid credentials is redirected to their account and dashboard. A user entering invalid credentials recieves an error message and remains on the login page.
     -  Priority: Necessary
     -  Dependencies: 
 
-99. Requirement Type: Security
+27. Requirement Type: Security
     -  Description: The System will restrict data access so that a logged in user can only view, edit, or delete stands associated with their specific User ID.
     -  Rationale: To ensure user privacy and data integrity, and prevent users from modifying or viewing other users' data.
     -  Fit Criterion: If a user attempts to access the data of another user, the system denies access.
