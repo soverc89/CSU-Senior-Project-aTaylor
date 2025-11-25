@@ -204,7 +204,7 @@ Security
 ----------------
 
 25. Requirement Type: Security
-    -  Description: The system will store all user passwords using a secure hashing algorithm.
+    -  Description: The system will store all user passsword hashes.
     -  Rationale: To protect user credentials from a data breach or an unauthorized database access
     -  Fit Criterion: Inspecting the datbase of user information will verify that the password field contains hashed strings rather than the user's actual password.
     -  Priority: Necessary
