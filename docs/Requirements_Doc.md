@@ -84,12 +84,7 @@ Functional
     -  Priority: Recommended
     -  Dependencies: 
 
-10. Requirement Type: Usability
-    -  Description: The user's homepage/dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
-    -  Rationale: Displaying a users stands in a graded and colored format makes it easy for the user to check their stands at a glance.
-    -  Fit Criterion: When viewing the user's dashboard the display for for stands will correctly rank them by grade and color them appropriatly based on their given grade.
-    -  Priority: Necessary
-    -  Dependencies: 
+
 
 11. Requirement Type: Functional
     -  Description: The System uses OpenWeatherMap/Weather.gov API to request windage data local to the user.
@@ -117,48 +112,49 @@ Functional
     -  Rationale: Major hunting opportunities such as the rutting season for whitetail deer often require planning farther ahead than just a week. Since accurate forecasts do not exist months ahead of time, the system would          need to rely on historical trends to provide the user with a probability of a stand being advantageous 
     -  Fit Criterion: (A) A user selects a date range 3 months in the future. (B) The system retrieves historical wind data for those specific days from previous years. (C) The system displays the stands ranked by their              historical advantageousness probability.
     -  Priority: Optional / Future Capability
-    -  Dependencies: 
-
-15. Requirement Type: Functional
-    -  Description: If I do 19, the system will need to manipulate past weather data in a meaningful way.
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
     -  Dependencies:
+   
+16. Requirement Type: Functional
+    -  Description: The system will include a calendar dashboard view that allows users to visualize data in a month or week grid format. The user will be able to navigate between past, present, and future months.
+    -  Rationale: To provide an interface for users to plan future hunting trips.
+    -  Fit Criterion: (A) Navigate to the Calendar page on the dashboard. (B) The system correctly displays the current month and days. (C) The user clicks "Next Month" and the view updates to the correct subsequent month.
+    -  Priority: Optional
+    -  Dependencies: N/A
 
+17. Requirement Type: Functional
+    -  Description: Within the Calendar Dashboard view, the system will calculate and display the sunrise and sunset times for each specific date based on the user's selected location.
+    -  Rationale: Hunting is typically regulated to daylight hours. Accurate sunrise and sunset data is necessary for safety and compliance with hunting laws.
+    -  Fit Criterion: (A) Select a specific date. (B) Compare the displayed sunrise time a verified and reliable source of sunrise data. (C) The times should match within a 2 minute margin of error.
+    -  Priority: Optional
+    -  Dependencies: #16
+
+18. Requirement Type: Functional
+    -  Description: Winin the Calendar Dashboard view, the system will display the Lunar Phase for each date, potentially with a visual icon to represent the current phase.
+    -  Rationale: For various reasons, some hunters prefer to hunt during specific phases of the moon whether its for visibility or a percieved effect on animal movement. This feature would let the user plan hunts around the         lunar calendar.
+    -  Fit Criterion: (A) Select a date with a known full moon. (B) Verify that the calendar correctly displays a full moon icon or text for that specific date.
+    -  Priority: Optional
+    -  Dependencies: #16
 
 Look and Feel
 -------------------
 
-16. Requirement Type: Look and Feel?
-    -  Description: I may or may not include a calendar function
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
 
-17. Requirement Type: Look and Feel
-    -  Description: I may or may not include a solar calendar
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
-
-18. Requirement Type: Look and Feel
-    -  Description: I may or may not include a lunar calendar
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
 
 Usability
 ------------------
 
-19. Requirement Type:
-    -  Description: 
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
+10. Requirement Type: Usability
+    -  Description: The user's homepage/dashboard will display a user's stands in a ranked format with a grade and color associated with each stand.
+    -  Rationale: Displaying a users stands in a graded and colored format makes it easy for the user to check their stands at a glance.
+    -  Fit Criterion: When viewing the user's dashboard the display for for stands will correctly rank them by grade and color them appropriatly based on their given grade.
+    -  Priority: Necessary
+    -  Dependencies: 
+
+19. Requirement Type: Usability
+    -  Description: The dashboard will display a visual compass icon for each stand in the list. This icon depicts the stands degree direction as well as the current wind direction based off the current weather data.
+    -  Rationale: This provides the user with another intuitive way to understand how thier stand is being ranked based on the current windage data.
+    -  Fit Criterion: (A) Create a stand facing north. (B) Feed in mock wind data to say that wind is coming from the east. (C) Verify on the dashbaord that the icon correctly displays the stand and wind direction.
+    -  Priority: Optional
     -  Dependencies: 
 
 Performance
@@ -172,33 +168,40 @@ Performance
     -  Dependencies: 
 
 21. Requirement Type: Performance
-    -  Description: Data of some sort will have to be saved for the users.
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
+    -  Description: The database will implement a One to Many relationship between users and stand groups. A single user may create multiple stand groups, but each group must initially belong to exactly one user
+    -  Rationale: To allow users to organize their hunting locations into collections rather than a single list of stands.
+    -  Fit Criterion: (A) Create a user. (B) Create two distinct groups under that user. (C) Verify in the database that both group records share the correct user_id.
+    -  Priority: Necessary
+    -  Dependencies:
 
 22. Requirement Type: Performance
-    -  Description: I will store weather data of some sort. Some long-term, some short term.
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
+  -  Description: The database will implement a One to Many relationship between stand groups and stands. A specific stand must be associated with exactly one group.
+  -  Rationale: Ensures that every stand is categorized within a specific property or location.
+  -  Fit Criterion: (A) Create a stand group. (B) Create a stand and assign it to that group. (C) Verify in database that the stand has the correct group_id.
+  -  Priority: Necessary
+  -  Dependencies:
+
+22. Requirement Type: Performance
+  -  Description: The database will enforce cascading deletes where if a user is deleted all of their stand groups and stands belonging to those groups will be deleted.
+  -  Rationale: To ensure data integrity and prevent orphaned stands and stand groups with no owner.
+  -  Fit Criterion: (A) Create a user, stand group, and stand. (B) Delete the User Account. (C) Query the database to confirm that the user, group, and stand have all been removed from the database.
+  -  Priority: Necessary.
+  -  Dependencies:
+
+22. Requirement Type: Performance
+  -  Description: To enable stand group sharing, the database will be designed to allow for a Many to Many relationship between users and groups.
+  -  Rationale: This database structure allows for a single stand group to be accessed by multiple users (a user and guest). Hunting Locations are often shared by multiple parties.
+  -  Fit Criterion: Verifying database supports associating a single group_id with multiple user_ids.
+  -  Priority: Optional
+  -  Dependencies: 
 
 23. Requirement Type:
-    -  Description: Two options (1/2) The system keeps track of weather locations and updates those at a set interval and that is what the user pulls from. Or, the weather for an area only updates once a user needs it
-       then that information is cached for other users.
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
+    -  Description: The system will cache weather data to cut down on API calls.
+    -  Rationale: To improve performance for all users, the system will only make API calls if they are needed to update current weather data. If multiple users are in a similar area, there is no need to make multiple API            calls for the same location.
+    -  Fit Criterion: (A) Have one user acccount trigger a weather data update. (B) Have a second user account with a similar location trigger a weather data update. (C) Verify that it used cached data rather than making a           new API call.
+    -  Priority: Recommended.
     -  Dependencies: 
 
-24. Requirement Type: Constraint ??
-    -  Description: The project will be limited to being a web application.
-    -  Rationale:
-    -  Fit Criterion:
-    -  Priority:
-    -  Dependencies: 
 
 Security
 ----------------
