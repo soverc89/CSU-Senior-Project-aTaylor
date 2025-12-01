@@ -1,4 +1,4 @@
-# Project Title
+# Hunting Stand Project
 
 Brief Project Description
 
