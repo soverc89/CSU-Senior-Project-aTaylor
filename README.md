@@ -1,4 +1,4 @@
-# Hunting Stand Project
+# Hunting Stand Weather Project
 
 Brief Project Description
 
