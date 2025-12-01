@@ -19,8 +19,11 @@ increase their chances of encountering game by carefully selecting ideal weather
 Project Description
 -------------------
 
-This project will collect and analyze weather data, primarily wind data, to 
-determine the best times and locations to hunt in a given area set by the user.
+The proposed project is a web based application designed to assist hunters in managing and selecting the optimal tree stand location based on real time weather conditions. In the sport of hunting, wind direction is one of the most critical variables. A hunter sitting upwind of their target will likely fail as their scent is carried toward the animal. Without a tool like the proposed project, hunters must mentally cross-reference weather forecasts with memory of where each stand is and which direction it faces. This project seeks to reduce that metal load and present an intuitive and informative digitized version of their property. The system will get live weather updates from external API's such as OpenWeatherMap and Weather.gov and compare it against a user's database of geolocated stands. The core function of the application is the "Stand Grader" algorithm that automatically ranks locations based on the current or forecasted wind direction.
+
+The hub of the application will be a home Dashboard that presents stands in a ranked list, using color coded grades (Green for favorable, Red for unfavorable) to allow for quick decision making. Beyond the dashboard, users can manage their dta through an interactive map interface, allowing them to drop stand pins to save coordinates automatically, or organize their stands into specific property groups.
+
+This application will be built as a web application using the Python Flask framework, specifically for its lightweight features. Data will be managed through a SQL database, a hierarchy to link users to stand groups, and stand groups to individual stands. Users will be authenticated by a secure login session and can only modify their own data. The system's backend will handle the logic of fetching JSON data from weather API's, caching it to optimize performance, and performing the math required to calculate stand grades.
 
 
 Proposed Implementation Language(s) 
