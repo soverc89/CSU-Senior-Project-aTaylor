@@ -1,10 +1,10 @@
 Hunting Stand Project
 ===================================================
 
-**Student Name(s)**: Andrew Taylor (put your name here, followed by two spaces)  
-**Degree and Major**: B.A. Applied Computing Cybersecurity (put your name here, followed by two spaces)  
-**Project Advisor Name**: Dr. Hayes (put your name here, followed by two spaces)  
-**Expected Graduation Date**: Spring 2027 (put the correct month and day here)
+**Student Name(s)**: Andrew Taylor 
+**Degree and Major**: B.A. Applied Computing Cybersecurity  
+**Project Advisor Name**: Dr. Hayes   
+**Expected Graduation Date**: Spring 2027 
 
 
 Problem Statement
@@ -50,20 +50,16 @@ Software:
 Alternative Solutions and Rationale 🔍
 --------------------------------------
 
-> **Purpose**: Describe at least two alternative solutions or approaches to your project. Compare these with your chosen solution based on relevant criteria (e.g., feasibility, scalability, cost, performance, usability). Explain why you selected your final approach.
-
 ### Alternative 1
   Physical Weather Station
 - **Description**:  
   This alternative would use a pre-built or custom-built weather station in order to collect real-time weather data instead of relying on weather data APIs.
   
 - **Pros**:  
-  - _(List strengths or advantages)_
   - Very accurate local weather readings
   - Less reliant on APIs
   - Cool Factor
 - **Cons**:  
-  - _(List weaknesses or limitations)_
   - Weather readings are only accurate within a certain radius of the station.
   - Scalibility is limited by needing physical weather stations at each location.
   - Maintenance / Troubleshooting of the weather station hardware.
@@ -75,21 +71,17 @@ Alternative Solutions and Rationale 🔍
   This alternative proposes using the Meteor framework, a all in one JavaScript stack, to build the web application instead of a Python based stack.
   
 - **Pros**:  
-  - _(List strengths or advantages)_
   - Frontend, Backend, and database are integrated together
   - Asynchronous Data/Live updates are built in.
 - **Cons**:  
-  - _(List weaknesses or limitations)_
   - Spotty development could lead to future issues with scalabiliity
   - Meteor has a small userbase, less online guides and documentation
   - Less flexible, forced to use the conventions of the Meteor framework
 
 ### Chosen Solution and Rationale
 - **Chosen Solution**:  
-  _(Restate your selected solution.)_
   My chosen solution for solving the problem statement is to use a standard Python stack that takes advantage of the many powerful weather API's already available.
 - **Rationale**:  
-  _(Justify your choice in comparison with the alternatives. Highlight key reasons for its selection.)_
 
 |          | Physical Weather Station | Meteor Stack | Standard Python Stack using Weather APIs |
 |----------|--------------------------|--------------|------------------------------------------|
@@ -98,11 +90,6 @@ Alternative Solutions and Rationale 🔍
 | Scalability | Scalability is the biggest weakness of going with a physical weather station. A phyiscal station only provides accurate weather data for the specific area around the station, decreasing in quality the farther you move away. For that reason, each additional hunting location would require another weather station, and weather information about that location could not be gathered until the station is set up. | Due to the inconsistant development of Meteor, scaling the project larger as time goes on could be limited by the slow development time. | A standard Python stack that uses weather data APIs provides the most scalability in comparison to the other alternatives. Due to how modular and flexible it is, parts of the application such as the database can be swapped out for more robust options. Projects built with all-in-one options like Meteor have to be rebuilt from the ground up if it stops being supported, not so with modular python stack. Going with a Weather API, increased scale just means more API calls which is far easier to scale then providing more physical weather stations. |
 | Performance | Performance is where a physical weather station shines. Once set up and running a physical weather station would provide the most accurate and up to date weather data for a given area. | Using Meteor comes with Live Web Updates and asynchronous data, probably its biggest strength| The standard python stack suffers from a lack of built in web application support for live updates. However this can be remedied by additional libraries such as SocketIO. Weather API's provide fairly accurate weather data in a timely manner that is suitalbe for this project. The incredibly precise data that a weather station would provide is not needed for a project like this. |
 | Usability | A physical weather station adds a great deal of extra testing and set up. It also adds another major point of failure into the system, where if a component in the physical station fails, the entire application will fail, rendering it useless to the user. | From my research, Meteor is not the most intuitive framework to learn. In addition, it is limited in terms of guides and documentation.| I am already familiar with Python and a lot of the libraries included with it, which makes starting a project like this much easier than learning a new framework like Meteor. Weather API's typically come with documentation and tools on how to obtain and parse specific data which make them very easy to incoroporate into this project.|
-
-  
-
-> 💡 *Tip: Consider using a comparison table to evaluate trade-offs across multiple criteria such as feasibility, performance, scalability, cost, and usability.*
-
 
 Personal Motivation
 -------------------
@@ -113,8 +100,6 @@ a variety of up to date and accurate information.
 
 Outline of Future Research Efforts
 ----------------------------------
-
-(What do you need to learn or figure out to complete this project? What tasks are you going to do the do?)
 
 Frontend:
   While I have done some basic frontend development in previous classes, I am still unfamiliar with a lot of it. That includes HTML, CSS, and Javascript.
@@ -131,8 +116,6 @@ Weather APIs
 
 Schedule 📅
 -----------
-
-> Update the dates and add your tasks by replacing the examples. Remove this note.
 
 *   Fall 2025 - CSCI 497
     -   October 1 - Meet with Dr. Hayes and finish final proposal details. 
@@ -166,5 +149,12 @@ Schedule 📅
 
 References 📚
 -------------
+https://flask.palletsprojects.com/en/stable/
+https://openweathermap.org/
+https://docs.mapbox.com/mapbox-gl-js/guides/
+https://www.weather.gov/documentation/services-web-api
+
+
+
 
 > List any references you cited in this proposal.
