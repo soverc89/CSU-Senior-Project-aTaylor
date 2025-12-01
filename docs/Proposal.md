@@ -149,12 +149,8 @@ Schedule 📅
 
 References 📚
 -------------
-https://flask.palletsprojects.com/en/stable/
-https://openweathermap.org/
-https://docs.mapbox.com/mapbox-gl-js/guides/
-https://www.weather.gov/documentation/services-web-api
+  https://flask.palletsprojects.com/en/stable/  
+  https://openweathermap.org/  
+  https://docs.mapbox.com/mapbox-gl-js/guides/  
+  https://www.weather.gov/documentation/services-web-api  
 
-
-
-
-> List any references you cited in this proposal.
