@@ -191,17 +191,33 @@ form, *scenarios*, scripts to read, and data collection methods.
 
 (Explain how user acceptance testing will be accomplished.)
 The goal of this testing is to ensure that the application and interface is 
-intuitive and easy to use for the user. The main method of testing will be a 
-two scripted scenario where (1) a user sets up a new property for hunting and
+intuitive and easy to use for the user. The main method of testing will be
+two scripted/simulated scenarios where (1) a user sets up a new property for hunting and
 (2) the user checks the dashboard to prepare for a hunt within a certain time 
-frame.
+frame. After each scenario the user will answer a questionnaire and rank the
+usability of each feature, answer how existing features could be improved, 
+and what additional features they would want to see.
 
-### User-Acceptance Test Cases
+### User-Acceptance Test Plan
 
-| #   | TEST ITEM | EXPECTED RESULTS | ACTUAL RESULTS | DATE |
-| --: | --------- | ---------------- | -------------- | ---- |
-|  1  |           |                  |                |      |
-|  2  |           |                  |                |      |
+1) Property Setup
+* Objective: Verify Creating Stand and Map logic
+* Instructions : "You are scouting a land to hunt on. Navigate to the map 
+  interface, create a new "Stand Group' for the property, place a hunting stand
+  at a location you have identified."
+
+2) Hunt Planning
+* Objective: Verify Dashboard and Grader utility
+* "It is a Wednesday, and you are planning a hunt for Saturday morning. Use the 
+  dashboard to find the highest ranking stand for that specific time and confirm
+  the wind direciton via the visual compass."
+
+Questionnaire
+---------------
+1) "On a scale of 1-5, how easy was it to create a stand using the map interface?"
+2) "Does the Dashboard communicate immediately which stand is best to hunt?"
+3) "Where there any features that felt unnecessary?"
+4) "What is one feature/tool you wish you had with long term planning
 
 
 Test Deliverables
@@ -218,8 +234,9 @@ Test Deliverables
 Schedule
 --------
 
-(Provide a summary of the testing schedule, specifying key test milestones, 
-and/or provide a link to the detailed schedule.)
+- Automated Unit Tests: September 20th
+- Survey/Questionnaire Open: September 21st
+- Survery/Questionaire Closed: October 16th
 
 Risks
 -----
