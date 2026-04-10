@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Using Pure.css framework as specified in proposal for MVP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOv715e//00081411b2E4aJIfh2CbWeCUGxZ1" crossorigin="anonymous">
+
+    <!-- Optional: Add custom CSS file here later -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+
+    {% if title %}
+    <title>{{ title }} - Hunting Stand Manager</title>
+    {% else %}
+    <title>Hunting Stand Manager</title>
+    {% endif %}
+</head>
+
+<body>
+    <!-- Simple Navbar -->
+    <nav style="background-color: #333; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <a href="{{ url_for('main.index') }}" style="color: white; font-weight: bold; font-size: 1.2em; text-decoration: none;">Hunting Stand Manager</a>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.index') }}" style="color: white; text-decoration: none;">Dashboard</a>
+            <a href="{{ url_for('main.profile') }}" style="color: white; text-decoration: none;">Profile</a>
+            <a href="{{ url_for('main.logout') }}" style="color: white; text-decoration: none;">Logout</a>
+            {% else %}
+            <a href="{{ url_for('main.login') }}" style="color: white; text-decoration: none;">Login</a>
+            <a href="{{ url_for('main.register') }}" style="color: white; text-decoration: none;">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <main style="padding: 20px;">
+        <div class="pure-u-1" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}" style="padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ddd; background-color: #f8f9fa;
+                                    color: {% if category == 'success' %}#155724{% else %}#721c24{% endif %};">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Block for Page Content -->
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

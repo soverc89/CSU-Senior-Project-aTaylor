@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2" style="margin: 0 auto; max-width: 400px; padding-top: 50px;">
+        <h2 style="text-align: center;">Login to Your Account</h2>
+
+        <form method="POST" action="" class="pure-form pure-form-stacked"
+            style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+            {{ form.hidden_tag() }}
+
+            <fieldset>
+                <div class="pure-control-group">
+                    {{ form.username.label }}
+
+                    {% if form.username.errors %}
+                    {{ form.username(class="pure-input-1", style="border-color: red;") }}
+                    <div style="color: red; font-size: 0.85em;">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class="pure-input-1") }}
+                    {% endif %}
+                </div>
+
+                <div class="pure-control-group" style="margin-top: 15px;">
+                    {{ form.password.label }}
+
+                    {% if form.password.errors %}
+                    {{ form.password(class="pure-input-1", style="border-color: red;") }}
+                    <div style="color: red; font-size: 0.85em;">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.password(class="pure-input-1") }}
+                    {% endif %}
+                </div>
+
+                <div style="margin-top: 20px;">
+                    {{ form.submit(class="pure-button pure-button-primary pure-input-1") }}
+                </div>
+            </fieldset>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <small>Need An Account? <a href="{{ url_for('main.register') }}">Sign Up Now</a></small>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pure-g">
+    <div class="pure-u-1" style="max-width: 800px; margin: 0 auto;">
+
+        <div style="margin-bottom: 20px;">
+            <a href="{{ url_for('main.properties') }}">← Back to Properties</a>
+        </div>
+
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 20px;">
+            <div>
+                <h2 style="margin: 0;">Stands at {{ property.name }}</h2>
+                {% if wind_degree is not none %}
+                <p style="margin: 5px 0 0 0; color: #666; font-size: 0.9em;">
+                    <strong>Current Local Wind:</strong> {{ wind_degree }}°
+                </p>
+                {% else %}
+                <p style="margin: 5px 0 0 0; color: #dc3545; font-size: 0.9em;">
+                    <strong>Current Local Wind:</strong> Unavailable
+                </p>
+                {% endif %}
+            </div>
+
+            <a href="{{ url_for('main.new_stand', property_id=property.id) }}"
+                class="pure-button pure-button-primary">Add New Stand</a>
+        </div>
+
+        {% if property.stands %}
+        <table class="pure-table pure-table-horizontal" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Stand Name</th>
+                    <th>Facing (Degree)</th>
+                    <th style="text-align: center;">Compass</th>
+                    <th>Current Grade</th> <!-- Placeholder for Phase 6 Weather Logic -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stand in sorted_stands %}
+                <tr>
+                    <td><strong>{{ stand.name }}</strong></td>
+                    <td>{{ stand.degree }}°</td>
+                    <td style="text-align: center;">
+                        <div style="position: relative; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ccc; background-color: #fff; display: inline-block; vertical-align: middle; margin: 0 auto; box-shadow: inset 0 0 5px rgba(0,0,0,0.1);" title="Black Arrow = Stand Direction | Blue Arrow = Wind Direction">
+                            <!-- N S E W Tick marks -->
+                            <div style="position: absolute; top: 2px; left: 50%; transform: translateX(-50%); width: 2px; height: 4px; background: #ccc;"></div>
+                            <div style="position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 2px; height: 4px; background: #ccc;"></div>
+                            <div style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); width: 4px; height: 2px; background: #ccc;"></div>
+                            <div style="position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 4px; height: 2px; background: #ccc;"></div>
+
+                            <!-- Stand Facing Arrow (Black) -->
+                            <div style="position: absolute; width: 100%; height: 100%; transform: rotate({{ stand.degree }}deg); z-index: 2;">
+                                <div style="position: absolute; top: 2px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 12px solid #333;"></div>
+                                <div style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 4px; height: 10px; background-color: #333;"></div>
+                            </div>
+                            
+                            {% if wind_degree is not none %}
+                            <!-- Wind Arrow (Blue) -->
+                            <div style="position: absolute; width: 100%; height: 100%; transform: rotate({{ wind_degree }}deg); z-index: 1;">
+                                <div style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 8px solid #007bff;"></div>
+                                <div style="position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 2px; height: 34px; background-color: #007bff; opacity: 0.7;"></div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        {% if wind_degree is not none %}
+                        {% set score = stand.current_score(wind_degree) %}
+
+                        {% if score >= 80 %}
+                        {% set badge_color = '#28a745' %} <!-- Green -->
+                        {% elif score >= 50 %}
+                        {% set badge_color = '#ffc107' %} <!-- Yellow -->
+                        {% else %}
+                        {% set badge_color = '#dc3545' %} <!-- Red -->
+                        {% endif %}
+
+                        <span
+                            style="background: {{ badge_color }}; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold;">
+                            {{ score }}%
+                        </span>
+                        {% else %}
+                        <span
+                            style="background: #6c757d; color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.85em;"
+                            title="Live weather API unavailable or Location missing.">
+                            Unavailable
+                        </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('main.edit_stand', property_id=property.id, stand_id=stand.id) }}"
+                            class="pure-button button-small" style="background: #ffc107;">Edit</a>
+
+                        <form action="{{ url_for('main.delete_stand', property_id=property.id, stand_id=stand.id) }}"
+                            method="POST" style="display: inline;">
+                            <button type="submit" class="pure-button button-small"
+                                style="background: #dc3545; color: white;"
+                                onclick="return confirm('Are you sure you want to delete this stand?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div style="background: #f4f4f4; padding: 40px; text-align: center; border-radius: 8px;">
+            <h3>No Stands Found</h3>
+            <p>You haven't added any stands to this property yet.</p>
+            <br>
+            <a href="{{ url_for('main.new_stand', property_id=property.id) }}"
+                class="pure-button pure-button-primary">Create Your First Stand</a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<style>
+    .button-small {
+        font-size: 85%;
+        padding: 0.3em 0.8em;
+    }
+</style>
+{% endblock content %}

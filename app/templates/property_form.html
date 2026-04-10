@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2" style="margin: 0 auto; max-width: 500px; padding-top: 30px;">
+        <h2 style="text-align: center;">{{ title }}</h2>
+
+        <form method="POST" action="" class="pure-form pure-form-stacked"
+            style="background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
+            {{ form.hidden_tag() }}
+
+            <fieldset>
+                <div class="pure-control-group">
+                    {{ form.name.label }}
+                    {% if form.name.errors %}
+                    {{ form.name(class="pure-input-1", style="border-color: red;") }}
+                    <div style="color: red; font-size: 0.85em;">
+                        {% for error in form.name.errors %}<span>{{ error }}</span>{% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.name(class="pure-input-1", placeholder="e.g. Back 40, Main Farm, Lease") }}
+                    {% endif %}
+                </div>
+
+                <div class="pure-g" style="margin-top: 15px;">
+                    <div class="pure-u-1 pure-u-md-1-2" style="padding-right: 10px;">
+                        <div class="pure-control-group">
+                            {{ form.latitude.label }}
+                            {% if form.latitude.errors %}
+                            {{ form.latitude(class="pure-input-1", style="border-color: red;", id="lat-input") }}
+                            {% else %}
+                            {{ form.latitude(class="pure-input-1", placeholder="34.0522", id="lat-input") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <div class="pure-control-group">
+                            {{ form.longitude.label }}
+                            {% if form.longitude.errors %}
+                            {{ form.longitude(class="pure-input-1", style="border-color: red;", id="lng-input") }}
+                            {% else %}
+                            {{ form.longitude(class="pure-input-1", placeholder="-118.2437", id="lng-input") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px; margin-bottom: 20px; text-align: center;">
+                    <button type="button" id="getLocationBtn" class="pure-button button-secondary"
+                        style="background: #17a2b8; color: white;">
+                        📍 Find My Location
+                    </button>
+                    <div id="locationStatus" style="font-size: 0.85em; color: #666; margin-top: 5px;"></div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    {{ form.submit(class="pure-button pure-button-primary pure-input-1") }}
+                </div>
+            </fieldset>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="{{ url_for('main.properties') }}">Cancel and return to properties</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('getLocationBtn').addEventListener('click', function () {
+        const statusText = document.getElementById('locationStatus');
+
+        if (!navigator.geolocation) {
+            statusText.textContent = "Geolocation is not supported by your browser.";
+            statusText.style.color = "red";
+            return;
+        }
+
+        statusText.textContent = "Locating...";
+        statusText.style.color = "#666";
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                document.getElementById('lat-input').value = position.coords.latitude.toFixed(6);
+                document.getElementById('lng-input').value = position.coords.longitude.toFixed(6);
+                statusText.textContent = "Location found!";
+                statusText.style.color = "green";
+            },
+            function (error) {
+                statusText.textContent = "Unable to retrieve your location. Please ensure location permissions are granted.";
+                statusText.style.color = "red";
+            }
+        );
+    });
+</script>
+{% endblock content %}
