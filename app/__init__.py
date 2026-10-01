@@ -6,14 +6,17 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 login_manager = LoginManager()
 
-def create_app():
+def create_app(test_config=None):
     # 1. Initialize the app inside the function
     app = Flask(__name__)
     
     # 2. Configure the app
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = 'some-secret-key' # In a real app, use environment variables
+    if test_config is None:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['SECRET_KEY'] = 'some-secret-key' # In a real app, use environment variables
+    else:
+        app.config.update(test_config)
     
     # 3. Attach the database and login manager to the app
     db.init_app(app)
