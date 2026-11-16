@@ -33,18 +33,19 @@ class Stand(db.Model):
     name = db.Column(db.String(100), nullable=False)
     # Adding a degree field as per requirements!
     degree = db.Column(db.Integer, nullable=True) 
+    # Stand coordinates are for map placement; weather uses Property coordinates.
+    latitude = db.Column(db.Float, nullable=True)
+    longitude = db.Column(db.Float, nullable=True)
     
     property_id = db.Column(db.Integer, db.ForeignKey('properties.id'), nullable=False)
     property = db.relationship("Property", back_populates="stands")
 
     def current_score(self, wind_degree):
         """
-        Calculates the Stand's grade based on the current wind direction.
-        100% means the wind is blowing directly FROM the stand's facing degree,
-        meaning the hunter's scent is blown BEHIND them (optimal).
-        
-        0% means the wind is blowing directly INTO the stand's facing degree,
-        meaning the hunter's scent is blown right in front of them (worst).
+        Grades the stand using the direction the wind travels toward.
+        WeatherManager converts NWS source headings before calling this method.
+        100% means wind travels opposite the stand's facing direction (behind the hunter).
+        0% means wind travels along the stand's facing direction (in front of the hunter).
         """
         if wind_degree is None or self.degree is None:
             return None

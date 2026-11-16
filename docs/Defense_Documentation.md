@@ -2,8 +2,8 @@
 **Date**: September 1, 2026  
 **Student**: Andrew Taylor  
 **Major**: Computer Science  
-**Degree**: BS in Computer Science  
-**Project Advisor**: [Project Advisor Name]
+**Degree**: BA in Applied Computing, Emphasis Cybersecurity
+**Project Advisor**: Dr. Sean Hayes
 
 ---
 
@@ -12,10 +12,10 @@
 When managing a hunting property with multiple stands, it can be difficult for hunters to determine the most advantageous location to hunt at any given time. Wind direction plays a critical role in hunting, as wind blowing from the hunter toward the game's expected location can easily give away their scent, ruining the hunt. Hunters need a quick, reliable way to cross-reference current wind data with their specific stand facings.
 
 ### Purpose
-The *Hunting Stand Weather Manager* is a web application designed to solve this problem by automatically retrieving local weather data and grading a user's hunting stands based on how favorable the wind direction is. By providing an at-a-glance dashboard that ranks stands from best (A) to worst (F), the application empowers hunters to make informed, data-driven decisions on where to hunt.
+The *Hunting Stand Weather Manager* is a web application designed to solve this problem by automatically retrieving local weather data and grading a user's hunting stands based on how favorable the wind direction is. By providing a dashboard that ranks stands from best (A) to worst (F), the application enables hunters to make informed, data driven decisions on where to hunt.
 
 ## 2. Research & Background
-Effective deer hunting relies heavily on scent control and wind awareness. Whitetail deer possess an incredibly acute sense of smell, capable of detecting human scent from hundreds of yards away depending on the wind. The mathematical challenge of this project involved taking a stand's facing degree (e.g., North = 0°) and comparing it against the wind direction degree (where the wind is blowing *from*). A mathematical algorithm was developed to calculate the absolute angular difference and convert it into a percentile score, where a wind blowing directly into the hunter's back is optimal (100%), and wind blowing directly into their face is the worst-case scenario (0%). 
+Effective deer hunting relies heavily on scent control and wind awareness. Whitetail deer possess an incredibly acute sense of smell, capable of detecting human scent from hundreds of yards away depending on the wind. The mathematical challenge of this project involved taking a stand's facing degree (e.g., North = 0°) and comparing it against the wind direction degree (where the wind is blowing from). A mathematical algorithm was developed to calculate the absolute angular difference and convert it into a percentile score, where a wind blowing directly into the hunter's back is optimal (100%), and wind blowing directly into their face is the worst-case scenario (0%). 
 
 Additionally, research was conducted into weather data providers, culminating in the decision to use the free U.S. National Weather Service (Weather.gov) API to avoid rate limits and costs associated with commercial APIs like OpenWeatherMap.
 
@@ -80,4 +80,4 @@ Based on the initial requirements document and UAT feedback, the following featu
 
 ## References & AI Citation
 - National Weather Service API. (2026). *API Web Service*. https://www.weather.gov/documentation/services-web-api
-- OpenAI. (2026). *ChatGPT (GPT-4)* [Large language model]. Used for assistance with prototyping test logic, creating test plans, generating pytest scripts, and outlining defense documentation. https://chat.openai.com/
+- OpenAI. (2026). *ChatGPT (GPT-4)* [Large language model]. Used for assistance with prototyping test logic, creating test plans, and generating pytest scripts. https://chat.openai.com/

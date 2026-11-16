@@ -2,7 +2,7 @@ import requests
 import time
 from flask import current_app
 
-# Simple module-level cache: {(lat, lng): (wind_direction, timestamp)}
+# Simple module-level cache: {(lat, lng): (wind_toward_degree, timestamp)}
 _WEATHER_CACHE = {}
 # Cache duration in seconds (1 hour)
 CACHE_DURATION = 3600
@@ -17,7 +17,8 @@ class WeatherManager:
 
     def get_wind_direction(self, lat, lng):
         """
-        Fetches the current wind direction (in degrees) for the given lat/long coordinates.
+        Returns the direction the wind travels toward, in degrees, for the given coordinates.
+        Converts the NWS "coming from" heading to the app's "traveling toward" heading.
         Uses the free weather.gov API. Returns None if there is an error or no data.
         """
         if lat is None or lng is None:
@@ -59,10 +60,11 @@ class WeatherManager:
             
             # Some stations might report wind direction as None if it's perfectly calm
             if wind_direction is not None:
-                wind_deg = int(wind_direction)
-                # Save to cache
-                _WEATHER_CACHE[cache_key] = (wind_deg, time.time())
-                return wind_deg
+                wind_from = int(wind_direction)
+                wind_toward = (wind_from + 180) % 360
+                # Cache the converted heading so cached and fresh results use the same convention.
+                _WEATHER_CACHE[cache_key] = (wind_toward, time.time())
+                return wind_toward
             return None
             
         except requests.exceptions.RequestException as e:

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Using Pure.css framework as specified in proposal for MVP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOv715e//00081411b2E4aJIfh2CbWeCUGxZ1" crossorigin="anonymous">
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
     <!-- Optional: Add custom CSS file here later -->
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
@@ -16,6 +16,7 @@
     {% else %}
     <title>Hunting Stand Manager</title>
     {% endif %}
+    {% block head %}{% endblock %}
 </head>
 
 <body>
@@ -52,6 +53,7 @@
         <!-- Block for Page Content -->
         {% block content %}{% endblock %}
     </main>
+    {% block scripts %}{% endblock %}
 </body>
 
 </html>

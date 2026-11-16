@@ -1,52 +1,71 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block head %}{% include '_map_head.html' %}{% endblock %}
 
 {% block content %}
-<div class="pure-g">
-    <div class="pure-u-1 pure-u-md-1-2" style="margin: 0 auto; max-width: 500px; padding-top: 30px;">
-        <h2 style="text-align: center;">{{ title }}</h2>
-
-        <form method="POST" action="" class="pure-form pure-form-stacked"
-            style="background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
-            {{ form.hidden_tag() }}
-
-            <fieldset>
-                <div class="pure-control-group">
+<div class="stand-editor">
+    <p><a href="{{ url_for('main.stands', property_id=property.id) }}">Back to stands at {{ property.name }}</a></p>
+    <h2>{{ title }}</h2>
+    <form method="POST" action="" class="pure-form pure-form-stacked">
+        {{ form.hidden_tag() }}
+        <div class="stand-editor-layout">
+            <div class="stand-editor-details">
+                <fieldset>
                     {{ form.name.label }}
-                    {% if form.name.errors %}
-                    {{ form.name(class="pure-input-1", style="border-color: red;") }}
-                    <div style="color: red; font-size: 0.85em;">
-                        {% for error in form.name.errors %}<span>{{ error }}</span>{% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.name(class="pure-input-1", placeholder="e.g. Hog Parlor, The Tower") }}
-                    {% endif %}
-                </div>
+                    {{ form.name(class='pure-input-1', placeholder='e.g. Creek Crossing', **{'aria-describedby': 'name-errors'}) }}
+                    <div id="name-errors" class="field-errors">{% for error in form.name.errors %}<p>{{ error }}</p>{% endfor %}</div>
 
-                <div class="pure-control-group" style="margin-top: 15px;">
                     {{ form.degree.label }}
-                    {% if form.degree.errors %}
-                    {{ form.degree(class="pure-input-1", style="border-color: red;", id="deg-input", type="number", min="0", max="360") }}
-                    <div style="color: red; font-size: 0.85em;">
-                        {% for error in form.degree.errors %}<span>{{ error }}</span>{% endfor %}
+                    {{ form.degree(class='pure-input-1', id='deg-input', min=0, max=360, step=1, **{'aria-describedby': 'degree-errors'}) }}
+                    <div id="degree-errors" class="field-errors">{% for error in form.degree.errors %}<p>{{ error }}</p>{% endfor %}</div>
+                    <div id="stand-direction-control" class="direction-control" hidden>
+                        <p id="direction-help" class="map-note">Drag or tap the circle to aim the stand.</p>
+                        <div id="stand-direction-dial" class="direction-dial" role="slider" tabindex="0"
+                             aria-label="Stand facing direction" aria-valuemin="0" aria-valuemax="359"
+                             aria-valuenow="0" aria-valuetext="No direction selected"
+                             aria-describedby="direction-help direction-keyboard-help">
+                            <span class="direction-north" aria-hidden="true">N</span>
+                            <span class="direction-east" aria-hidden="true">E</span>
+                            <span class="direction-south" aria-hidden="true">S</span>
+                            <span class="direction-west" aria-hidden="true">W</span>
+                            <span id="stand-direction-arrow" class="direction-arrow" aria-hidden="true"></span>
+                            <span class="direction-center" aria-hidden="true"></span>
+                        </div>
+                        <p id="stand-direction-value" class="direction-value" role="status"></p>
+                        <p id="direction-keyboard-help" class="direction-keyboard-help">Keyboard: arrow keys turn 1°. Hold Shift to turn 15°. North is at the top, matching the map.</p>
                     </div>
-                    {% else %}
-                    {{ form.degree(class="pure-input-1", placeholder="e.g. 90 for East", id="deg-input", type="number", min="0", max="360") }}
-                    {% endif %}
-                </div>
 
-                <div style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                    <em>Enter the degree direction the stand faces. 0 = North, 90 = East, 180 = South, 270 = West.</em>
+                    <h3 style="margin-bottom: 0;">Stand location</h3>
+                    <p class="map-note">Use your current location, click the map, or enter coordinates. You can also save a stand without a map location.</p>
+                    <button type="button" id="find-stand-location" class="pure-button" disabled aria-describedby="stand-location-status">Find My Location</button>
+                    <p id="stand-location-status" class="map-note" role="status">Choose Find My Location and allow location access to place this stand where you are.</p>
+                    <noscript><p class="map-note">Enable JavaScript to use Find My Location, or enter coordinates below.</p></noscript>
+                    {% include '_location_fields.html' %}
+                    <p class="map-note">These coordinates place this stand on the map. Wind readings use the property's location.</p>
+                    {{ form.submit(class='pure-button map-action pure-input-1') }}
+                    <p><a href="{{ url_for('main.stands', property_id=property.id) }}">Cancel</a></p>
+                </fieldset>
+            </div>
+            <section class="map-panel" aria-labelledby="stand-map-title">
+                <div class="map-heading">
+                    <h3 id="stand-map-title">Choose a stand location</h3>
+                    <p>Click to place the blue pin, then drag it to fine-tune the location. Save Stand to keep your changes.</p>
+                    <div class="map-toolbar">
+                        <button type="button" id="fit-map" class="pure-button">Center map</button>
+                        <button type="button" id="clear-map-location" class="pure-button">Clear location</button>
+                    </div>
                 </div>
-
-                <div style="margin-top: 20px;">
-                    {{ form.submit(class="pure-button pure-button-primary pure-input-1") }}
-                </div>
-            </fieldset>
-        </form>
-
-        <div style="text-align: center; margin-top: 15px;">
-            <a href="{{ url_for('main.stands', property_id=property.id) }}">Cancel and return to stands</a>
+                <div id="stand-map" class="map-canvas" data-mode="editor" role="region" aria-label="Choose or move this stand's location"></div>
+                <p id="map-status" class="map-status" role="status">Click the map to choose a location, or enter both coordinates.</p>
+                <p id="map-tiles-status" class="map-error" role="status"></p>
+                <noscript><p class="map-status">Enable JavaScript to use the map, or enter coordinates in the form.</p></noscript>
+            </section>
         </div>
-    </div>
+    </form>
 </div>
-{% endblock content %}
+{% endblock %}
+
+{% block scripts %}
+{% include '_map_scripts.html' %}
+<script src="{{ url_for('static', filename='stand-location.js') }}"></script>
+<script src="{{ url_for('static', filename='stand-direction.js') }}"></script>
+{% endblock %}

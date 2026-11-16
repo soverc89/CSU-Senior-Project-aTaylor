@@ -30,7 +30,9 @@ The `models.py` file has a basic schema but needs to be formally integrated with
 - [x] **Stands:**
   - [x] Create routes & UI to Add, View, Edit, and Delete Stands within a specific Property.
   - [x] Build the "Create Stand" form, including fields for Name, Degree (facing direction), and optional coordinates.
-  - [x] Incorporate browser Geolocation API for the "Find My Location" button on the stand creation form to autofill coordinates.
+  - [x] Incorporate browser Geolocation API on the property form to supply shared weather coordinates (clarified scope).
+  - [x] Add **Find My Location** to stand creation/editing for field placement, with pin centering, accuracy feedback, and permission/error handling. Stand coordinates remain separate from property weather coordinates.
+  - [x] Add satellite/street maps for stand placement, editing, and saved-pin management (Requirement 6).
 
 ## Phase 6: Weather Integration & Stand Grader
 The current `Weather_Manager` is hardcoded to a specific weather station. This needs to be dynamic.

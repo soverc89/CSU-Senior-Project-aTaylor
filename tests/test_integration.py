@@ -5,8 +5,11 @@ from app import db
 from app.models import User, Property, Stand
 import time
 
-def test_weather_api_success():
-    """Integration Case 1: Weather API Success Mocking"""
+@pytest.mark.parametrize('wind_from, expected_toward', [
+    (0, 180), (90, 270), (180, 0), (270, 90), (360, 180), (None, None),
+])
+def test_weather_api_success(wind_from, expected_toward):
+    """NWS source headings become travel headings, including wraparound and calm wind."""
     # Mock requests.get to return a mock response for weather.gov points, stations, and observations
     with patch('app.weather.requests.get') as mock_get:
         # We need to simulate three sequential calls: points, stations, observation
@@ -16,7 +19,7 @@ def test_weather_api_success():
             # 2. stations data
             {'features': [{'properties': {'stationIdentifier': 'MOCK1'}}]},
             # 3. observation data
-            {'properties': {'windDirection': {'value': 270}}}
+            {'properties': {'windDirection': {'value': wind_from}}}
         ]
         
         wm = WeatherManager()
@@ -24,7 +27,7 @@ def test_weather_api_success():
         _WEATHER_CACHE.clear()
         
         direction = wm.get_wind_direction(38.0, -77.0)
-        assert direction == 270
+        assert direction == expected_toward
         assert mock_get.call_count == 3
 
 def test_weather_api_error_handling():
@@ -56,12 +59,12 @@ def test_weather_data_caching():
         
         # First call makes 3 requests
         direction1 = wm.get_wind_direction(38.0, -77.0)
-        assert direction1 == 180
+        assert direction1 == 0
         assert mock_get.call_count == 3
         
         # Second call within same location should use cache (0 additional requests)
         direction2 = wm.get_wind_direction(38.0, -77.0)
-        assert direction2 == 180
+        assert direction2 == 0
         assert mock_get.call_count == 3
 
 def test_grader_refresh(client, init_database):
@@ -83,7 +86,7 @@ def test_grader_refresh(client, init_database):
     # Login
     client.post('/login', data={'username': 'integ_user', 'password': 'pw'})
     
-    # Mock Weather API to return wind from 180 (so score should be 100%)
+    # Wind from south travels north, opposite the stand's south-facing heading: 100%.
     with patch('app.weather.requests.get') as mock_get:
         mock_get.return_value.json.side_effect = [
             {'properties': {'observationStations': 'http://mock-stations'}},
@@ -94,9 +97,8 @@ def test_grader_refresh(client, init_database):
         
         response = client.get(f'/property/{prop.id}/stands')
         assert response.status_code == 200
-        # The stand score should be calculated as 100 on the dashboard
-        # Assuming the template renders the score
-        assert b"100%" in response.data or b"Integ Stand" in response.data
+        assert b"Integ Stand" in response.data
+        assert b"100%" in response.data
 
 def test_regression_end_to_end(client, init_database):
     """Regression Test: End-to-End Property and Stand Creation"""
