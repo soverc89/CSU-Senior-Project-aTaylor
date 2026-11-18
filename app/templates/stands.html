@@ -75,20 +75,21 @@
 
         {% if property.stands %}
         <div class="table-scroll">
-        <table class="pure-table pure-table-horizontal" style="width: 100%;">
+        <table class="pure-table pure-table-horizontal stand-table">
             <thead>
                 <tr>
-                    <th>Stand Name</th>
-                    <th>Facing (Degree)</th>
+                    <th class="stand-name-column">Stand Name</th>
+                    <th class="stand-facing-column">Facing (Degree)</th>
                     <th style="text-align: center;">Compass</th>
-                    <th id="wind-grade-title">Current Grade</th>
-                    <th>Actions</th>
+                    <th id="wind-grade-title" class="stand-favorability-column">Favorability</th>
+                    <th class="stand-menu-column" scope="col" aria-label="Stand actions"><span class="stand-desktop-action-heading">Actions</span></th>
                 </tr>
             </thead>
             <tbody id="stand-rows">
                 {% for stand in sorted_stands %}
                 <tr data-stand-id="{{ stand.id }}" data-facing="{{ stand.degree if stand.degree is not none else '' }}">
-                    <td><strong>{{ stand.name }}</strong>
+                    <td class="stand-name-column">
+                        <strong>{{ stand.name }}</strong>
                         <span class="stand-location-note">
                             {% if stand.latitude is not none and stand.longitude is not none %}
                             <button type="button" data-focus-stand="{{ stand.id }}">Show on map</button>
@@ -97,7 +98,7 @@
                             {% endif %}
                         </span>
                     </td>
-                    <td>{{ stand.degree }}°</td>
+                    <td class="stand-facing-column">{% if stand.degree is not none %}{{ stand.degree }}°{% else %}Not set{% endif %}</td>
                     <td style="text-align: center;">
                         <div style="position: relative; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ccc; background-color: #fff; display: inline-block; vertical-align: middle; margin: 0 auto; box-shadow: inset 0 0 5px rgba(0,0,0,0.1);" title="Black arrow = Stand facing | Blue arrow = Wind blowing toward">
                             <!-- N S E W Tick marks -->
@@ -118,8 +119,9 @@
                                 <div style="position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 2px; height: 34px; background-color: #007bff; opacity: 0.7;"></div>
                             </div>
                         </div>
+                        <div class="stand-compass-degree">{% if stand.degree is not none %}{{ stand.degree }}°{% else %}Not set{% endif %}</div>
                     </td>
-                    <td data-wind-grade>
+                    <td data-wind-grade class="stand-favorability-column">
                         {% set score = stand.current_score(wind_degree) %}
                         {% if score is not none %}
 
@@ -143,17 +145,29 @@
                         </span>
                         {% endif %}
                     </td>
-                    <td>
-                        <a href="{{ url_for('main.edit_stand', property_id=property.id, stand_id=stand.id) }}"
-                            class="pure-button button-small" style="background: #ffc107;">Edit</a>
-
-                        <form action="{{ url_for('main.delete_stand', property_id=property.id, stand_id=stand.id) }}"
-                            method="POST" style="display: inline;">
-                            {{ delete_form.hidden_tag() }}
-                            <button type="submit" class="pure-button button-small"
-                                style="background: #dc3545; color: white;"
-                                onclick="return confirm('Are you sure you want to delete this stand?');">Delete</button>
-                        </form>
+                    <td class="stand-menu-column">
+                        <div class="stand-desktop-actions">
+                            <a href="{{ url_for('main.edit_stand', property_id=property.id, stand_id=stand.id) }}"
+                               class="pure-button stand-action-button stand-edit-button">Edit</a>
+                            <form action="{{ url_for('main.delete_stand', property_id=property.id, stand_id=stand.id) }}" method="POST">
+                                {{ delete_form.hidden_tag() }}
+                                <button type="submit" class="pure-button stand-action-button stand-delete-button"
+                                        onclick="return confirm('Are you sure you want to delete this stand?');">Delete</button>
+                            </form>
+                        </div>
+                        <details class="stand-actions">
+                            <summary aria-label="Actions for {{ stand.name }}">
+                                <span class="stand-actions-toggle" aria-hidden="true">⋮</span>
+                            </summary>
+                            <div class="stand-actions-menu">
+                                <a href="{{ url_for('main.edit_stand', property_id=property.id, stand_id=stand.id) }}">Edit</a>
+                                <form action="{{ url_for('main.delete_stand', property_id=property.id, stand_id=stand.id) }}" method="POST">
+                                    {{ delete_form.hidden_tag() }}
+                                    <button type="submit" class="stand-delete-action"
+                                            onclick="return confirm('Are you sure you want to delete this stand?');">Delete</button>
+                                </form>
+                            </div>
+                        </details>
                     </td>
                 </tr>
                 {% endfor %}
@@ -175,12 +189,6 @@
     </div>
 </div>
 
-<style>
-    .button-small {
-        font-size: 85%;
-        padding: 0.3em 0.8em;
-    }
-</style>
 {% endblock content %}
 
 {% block scripts %}

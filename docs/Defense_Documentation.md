@@ -61,17 +61,34 @@ Automated unit, integration, and regression testing achieved a 100% pass rate ac
 - [Test Results Report](Test_Results.md)
 - [User Acceptance Testing Scripts](UAT_Plan.md)
 
+### User Questionnaire Feedback
+
+Questionnaire responses rated map-based stand creation as 5 out of 5 for ease of use. Feedback indicated that the dashboard immediately communicated which stand was most favorable to hunt, and no features were identified as unnecessary. These findings provide positive evidence for the perceived usability of the prototype's stand-creation and ranking workflows.
+
+Suggested additions included precipitation probability, advance stand planning, stand photos, camera integration, and property-boundary mapping. The suggestions inform the future-development roadmap. Questionnaire findings are documented separately from automated functional and security verification in the [Test Results Report](Test_Results.md#user-questionnaire-results).
+
 ## 8. Challenges Overcome
 - **NWS API Structure**: The Weather.gov API does not allow querying weather directly by coordinates. It required a multi-step request process: converting coordinates to a grid point, finding the nearest observation station, and then querying that station's latest observation. This was overcome by building a robust `WeatherManager` class.
 - **Testing API Dependencies**: Testing the weather integration without making actual network calls (which can be slow or fail in CI environments) was challenging. This was overcome by utilizing Python's `unittest.mock` to intercept `requests.get` and inject mock JSON responses.
 - **Mathematical Logic**: Determining the shortest distance between two degrees on a 360-degree circle required careful mathematical formulation to ensure it always scaled correctly between 0% and 100%.
 
 ## 9. Future Enhancements
-Based on the initial requirements document and UAT feedback, the following features are slated for future releases:
+Potential future enhancements include the existing roadmap and suggestions from questionnaire feedback. They are outside the agreed presentation-prototype scope.
+
+### Existing Roadmap
+
 1. **Dark Mode**: To prevent glaring screens from ruining a hunter's night vision during pre-dawn setup.
 2. **Long Range Planner**: Using historical weather trends to predict stand viability months in advance.
 3. **Lunar Phase & Sunrise/Sunset Integration**: Adding a calendar view that tracks solar and lunar cycles, which heavily influence game movement.
 4. **Shared Stand Groups**: Converting the One-to-Many property relationship to a Many-to-Many relationship, allowing hunting clubs to share stands across multiple user accounts.
+
+### Questionnaire Suggestions
+
+- **Precipitation Probability**: Display the chance of precipitation to help users consider additional weather conditions.
+- **Advance Stand Planning**: Compare projected stand favorability before a future hunt. This aligns with the deferred forecast planner and is distinct from the historical-data long-range planner.
+- **Stand Photos**: Add photographs to individual stand records.
+- **Camera Integration**: Associate relevant camera information with properties or stands.
+- **Property Boundaries**: Mark or display property boundaries on the map.
 
 ## 10. Defense Presentation Slides
 - [Link to Presentation Slides (Pending)]

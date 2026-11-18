@@ -59,6 +59,24 @@
 .field-errors { color: #ad2b2b; font-size: .85rem; }
 .field-errors p { margin: 4px 0; }
 .table-scroll { overflow-x: auto; }
+.stand-table { width: 100%; max-width: 100%; }
+.stand-table th, .stand-table td { padding: 8px 16px; }
+.stand-compass-degree { display: none; margin-top: 3px; font-size: .85rem; line-height: 1.2; color: #455b4c; }
+.stand-desktop-actions { display: flex; align-items: center; gap: 6px; }
+.stand-desktop-actions form { margin: 0; }
+.stand-action-button { font-size: 85%; padding: .3em .8em; }
+.stand-edit-button { background: #ffc107; }
+.stand-delete-button { background: #dc3545; color: white; }
+.stand-actions { display: none; width: max-content; min-width: 28px; }
+.stand-actions > summary { display: flex; align-items: center; justify-content: flex-start; gap: 4px; min-height: 32px; cursor: pointer; list-style: none; }
+.stand-actions > summary::-webkit-details-marker { display: none; }
+.stand-actions > summary:focus-visible { outline: 2px solid #176fc1; outline-offset: 2px; border-radius: 4px; }
+.stand-actions-toggle { display: flex; align-items: center; justify-content: center; width: 28px; flex: 0 0 28px; height: 32px; border-radius: 4px; background: #edf2ed; color: #285c3c; font-size: 24px; line-height: 1; }
+.stand-actions[open] .stand-actions-toggle { background: #dce8dc; }
+.stand-actions-menu { display: grid; gap: 4px; padding: 4px; margin: 4px 0; border: 1px solid #d6dfd8; border-radius: 6px; background: #fff; }
+.stand-actions-menu form { margin: 0; }
+.stand-actions-menu a, .stand-actions-menu button { display: block; box-sizing: border-box; width: 100%; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 4px; background: #f2f6f2; color: #285c3c; text-align: left; text-decoration: none; font: inherit; cursor: pointer; }
+.stand-actions-menu .stand-delete-action { color: #962d2d; background: #fff1f1; }
 .wind-panel { border: 1px solid #d6dfd8; border-radius: 10px; padding: 16px 18px; background: #f7f9f7; }
 .wind-panel h3 { margin: 0 0 6px; color: #21422e; }
 .wind-panel p { font-size: .92rem; line-height: 1.5; margin: 8px 0; }
@@ -73,6 +91,14 @@
     .property-dashboard-layout { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 720px) {
+    .stand-table { width: auto; }
+    .stand-table th, .stand-table td { padding: 6px 12px; }
+    .stand-table .stand-name-column { padding-right: 2px; }
+    .stand-table .stand-favorability-column { padding-right: 6px; }
+    .stand-table .stand-menu-column { width: 28px; min-width: 28px; padding-left: 4px; padding-right: 8px; }
+    .stand-table .stand-location-note { margin-top: 4px; }
+    .stand-facing-column, .stand-desktop-actions, .stand-desktop-action-heading { display: none; }
+    .stand-compass-degree, .stand-actions { display: block; }
     .stand-editor-layout { grid-template-columns: 1fr; }
     .map-canvas { height: 340px; }
     .stand-editor-details { padding: 18px; }

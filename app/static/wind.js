@@ -6,7 +6,6 @@
     const select = document.getElementById('wind-override');
     const reset = document.getElementById('wind-reset');
     const status = document.getElementById('wind-status');
-    const gradeTitle = document.getElementById('wind-grade-title');
     const table = document.getElementById('stand-rows');
     const rows = table ? Array.from(table.querySelectorAll('[data-stand-id]')) : [];
     const actualWind = panel.dataset.actualWind === '' ? null : Number(panel.dataset.actualWind);
@@ -31,7 +30,6 @@
             ? `Preview wind: From the ${select.selectedOptions[0].textContent.toLowerCase()}. Grades and map colors show this temporary override. Refresh to restore actual wind.`
             : actualWind === null ? 'Actual wind is unavailable. Choose a wind to preview stand grades.'
                 : "Grades use the property's actual wind.";
-        if (gradeTitle) gradeTitle.textContent = overridden ? 'Preview Grade' : 'Current Grade';
         const scores = new Map();
         const standScores = [];
         rows.forEach(row => {

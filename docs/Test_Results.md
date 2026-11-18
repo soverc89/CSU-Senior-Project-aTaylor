@@ -33,6 +33,28 @@
 
 ## Manual & User Acceptance Testing
 
+### User Questionnaire Results
+
+Questionnaire feedback was collected about map-based stand creation, dashboard clarity, and possible enhancements.
+
+| Question | Reported Result |
+| :--- | :--- |
+| On a scale of 1–5, how easy was it to create a stand using the map interface? | 5/5 ease-of-use rating. |
+| Does the dashboard communicate immediately which stand is best to hunt? | Yes. |
+| Were there any features that felt unnecessary? | No. |
+
+The feedback supports the perceived usability of the prototype's map-based stand creation and ranked dashboard. Users reported that the dashboard communicated which stand was most favorable and did not identify unnecessary features. Functional, security, and browser/device verification are tracked separately from these questionnaire findings.
+
+### Requested Future Enhancements
+
+- **Probability of precipitation:** Display the chance of precipitation alongside wind conditions.
+- **Advance stand planning:** Allow users to compare expected stand favorability before a future hunt.
+- **Stand photos:** Let users add photographs to stand records.
+- **Camera integration:** Connect relevant camera information with properties or stands.
+- **Property boundaries:** Allow users to mark or display property boundaries on the map.
+
+These are suggestions for future development and do not expand the agreed presentation-prototype scope. Advance stand planning aligns with the previously deferred forecast-planning feature.
+
 ## Map Feature Verification — October 12, 2026
 
 - Full current automated suite: **51 passed**; SQLAlchemy legacy `Query.get()` warnings remain.
@@ -40,7 +62,7 @@
 - Separate JavaScript checks: **23 assertions passed** using simulated DOM/Leaflet events. These do not constitute rendered browser or user acceptance testing.
 - Public satellite service and Leaflet library endpoints responded successfully.
 - Browser visual and pointer/touch checks remain pending because browser automation was unavailable in this session.
-- Implementation and setup: [Map Feature](MAP_FEATURE.md).
+- Local setup: [README](../README.md#compiledeploy).
 
 ## Wind Labels and Temporary Preview — October 20, 2026
 

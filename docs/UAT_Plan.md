@@ -27,10 +27,16 @@ The goal of this User Acceptance Testing is to ensure that the "Hunting Stand We
 ## Post-Test Questionnaire
 *To be filled out by the participant after completing both scenarios.*
 
-1. On a scale of 1-5, how easy was it to create a property and stand? (1 = Very Difficult, 5 = Very Easy)
+1. On a scale of 1-5, how easy was it to create a stand using the map interface? (1 = Very Difficult, 5 = Very Easy)
 2. Does the Dashboard communicate immediately which stand is best to hunt? (Yes/No, please explain)
-3. Were there any features that felt unnecessary or confusing?
-4. What is one feature or tool you wish you had for long-term hunt planning?
+3. Were there any features that felt unnecessary?
+4. What is one feature or tool you wish was included?
+
+## Recorded Questionnaire Findings
+
+Map-based stand creation received a 5/5 ease-of-use rating. Feedback indicated that the dashboard immediately communicated which stand was best to hunt, and no features were identified as unnecessary. Requested additions included precipitation probability, advance stand planning, stand photos, camera integration, and property-boundary mapping.
+
+The findings support perceived usability of the core workflows. See [Test Results](Test_Results.md#user-questionnaire-results) for the questionnaire summary and proposed future enhancements.
 
 ---
-*Note for Presenter: Ensure you record the participants' answers and synthesize their feedback for the final Defense Documentation (Chapter 8: Challenges Overcome and Chapter 9: Future Enhancements).*
+*Presenter note: The questionnaire summary is recorded in the Test Results report and reflected in the Defense Documentation and presentation outline. Keep reported usability findings distinct from functional test results.*

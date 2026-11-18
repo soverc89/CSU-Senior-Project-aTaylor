@@ -40,6 +40,7 @@ async function page(actualWind = 180, { map = true, headings = [0, 180, null] } 
         'stand-rows', 'stand-map', 'map-status', 'map-tiles-status', 'add-on-map', 'fit-map', 'map-data',
     ].map(id => [id, new Element()]));
     elements['wind-controls'].dataset.actualWind = actualWind === null ? '' : String(actualWind);
+    elements['wind-grade-title'].textContent = 'Favorability';
     elements['stand-map'].dataset.mode = 'dashboard';
     elements['wind-override'].optionNames = {
         '0': 'North', '22.5': 'North-northeast', '67.5': 'East-northeast',
@@ -107,12 +108,12 @@ try {
     assert.equal(p.grade(2), 'Unavailable');
     assert.equal(p.rows[0].parts['.wind-arrow'].style.transform, 'rotate(0deg)');
     assert.match(p.elements['wind-status'].textContent, /From the south/);
-    assert.equal(p.elements['wind-grade-title'].textContent, 'Preview Grade');
+    assert.equal(p.elements['wind-grade-title'].textContent, 'Favorability');
     assert.match(p.markers[1].options.icon.html.className, /good/);
     assert.match(p.markers[1].popup.children[1].textContent, /100% preview grade/);
     p.reset();
     assert.equal(p.grade(0), '100%'); assert.equal(p.elements['stand-rows'].children[0], p.rows[0]);
-    assert.equal(p.elements['wind-grade-title'].textContent, 'Current Grade');
+    assert.equal(p.elements['wind-grade-title'].textContent, 'Favorability');
     assert.match(p.markers[0].popup.children[1].textContent, /100% grade/);
     assert.equal(p.elements['wind-reset'].disabled, true);
     cases++;

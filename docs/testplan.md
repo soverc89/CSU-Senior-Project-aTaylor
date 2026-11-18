@@ -216,8 +216,12 @@ Questionnaire
 ---------------
 1) "On a scale of 1-5, how easy was it to create a stand using the map interface?"
 2) "Does the Dashboard communicate immediately which stand is best to hunt?"
-3) "Where there any features that felt unnecessary?"
-4) "What is one feature/tool you wish you had with long term planning
+3) "Were there any features that felt unnecessary?"
+4) "What is one feature or tool you wish was included?"
+
+### Recorded Questionnaire Results
+
+Map-based stand creation received a 5/5 ease-of-use rating. Feedback indicated that the dashboard immediately communicated which stand was best to hunt, and no features were identified as unnecessary. Enhancement requests included precipitation probability, advance stand planning, stand photos, camera integration, and property-boundary mapping. See [Test Results](Test_Results.md#user-questionnaire-results) for the reported findings. These questionnaire results concern perceived usability; functional and security checks are documented separately.
 
 
 Test Deliverables

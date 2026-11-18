@@ -7,3 +7,12 @@ instance/
 venv/
 env/
 .pytest_cache/
+
+# Keep supporting documentation local; publish only the submission documents.
+/docs/*
+!/docs/Defense_Documentation.md
+!/docs/Proposal.md
+!/docs/Requirements_Doc.md
+!/docs/Test_Results.md
+!/docs/testplan.md
+!/docs/UAT_Plan.md
