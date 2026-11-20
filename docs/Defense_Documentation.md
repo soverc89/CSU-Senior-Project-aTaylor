@@ -45,7 +45,7 @@ The `weather.py` module manages the 3-step NWS API process (Points -> Stations -
 
 ### User Interface & Walkthrough
 
-![screenshot](media/properties.png)
+![screenshot](/media/properties.png)
 - **Figure 1. User Properties.** Shows the list of properties belonging to the user.
 - **Figure 2. Property Management.** Shows the form for creating a new property. [INSERT SCREENSHOT HERE]
 - **Figure 3. The Dashboard.** Shows the ranked list of stands, color-coded by their grade. [INSERT SCREENSHOT HERE]
