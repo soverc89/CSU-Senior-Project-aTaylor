@@ -21,6 +21,7 @@ class Element {
     addEventListener(name, callback) { (this.listeners[name] ??= []).push(callback); }
     dispatchEvent(event) { (this.listeners[event.type] ?? []).forEach(callback => callback(event)); }
     querySelector(selector) { return this.parts[selector]; }
+    closest() { return this.panel ?? null; }
     querySelectorAll() { return this.children; }
     get selectedOptions() { return [{ textContent: this.optionNames[this.value] }]; }
 }
@@ -34,7 +35,7 @@ const load = async file => {
     await import(pathToFileURL(target).href);
 };
 
-async function page(actualWind = 180, { map = true, headings = [0, 180, null] } = {}) {
+async function page(actualWind = 180, { map = true, headings = [0, 180, null], collapsedMap = false } = {}) {
     const elements = Object.fromEntries([
         'wind-controls', 'wind-override', 'wind-reset', 'wind-status', 'wind-grade-title',
         'stand-rows', 'stand-map', 'map-status', 'map-tiles-status', 'add-on-map', 'fit-map', 'map-data',
@@ -42,6 +43,12 @@ async function page(actualWind = 180, { map = true, headings = [0, 180, null] } 
     elements['wind-controls'].dataset.actualWind = actualWind === null ? '' : String(actualWind);
     elements['wind-grade-title'].textContent = 'Favorability';
     elements['stand-map'].dataset.mode = 'dashboard';
+    const mapPanel = new Element();
+    mapPanel.open = !collapsedMap;
+    elements['stand-map'].panel = mapPanel;
+    const focusButton = new Element();
+    focusButton.dataset.focusStand = '1';
+    elements['stand-map'].scrollIntoView = () => { elements['stand-map'].scrolled = true; };
     elements['wind-override'].optionNames = {
         '0': 'North', '22.5': 'North-northeast', '67.5': 'East-northeast',
         '90': 'East', '157.5': 'South-southeast', '180': 'South', '202.5': 'South-southwest',
@@ -64,13 +71,19 @@ async function page(actualWind = 180, { map = true, headings = [0, 180, null] } 
     const document = new Element();
     document.getElementById = id => elements[id] ?? null;
     document.createElement = () => new Element();
-    document.querySelectorAll = () => [];
+    document.querySelectorAll = () => [focusButton];
     const window = new Element();
     const forbidden = () => { throw new Error('Preview must not make requests or persist data'); };
     window.fetch = forbidden; window.localStorage = { setItem: forbidden };
     window.sessionStorage = { setItem: forbidden };
     const markers = [];
-    const leafletMap = { setView() { return this; }, fitBounds() {}, on() {}, getZoom() { return 17; } };
+    const leafletMap = {
+        fits: 0, invalidations: 0,
+        setView(position, zoom) { this.view = { position, zoom }; return this; },
+        fitBounds() { this.fits++; },
+        invalidateSize() { this.invalidations++; },
+        on() {}, getZoom() { return 17; },
+    };
     const layer = () => ({ addTo() { return this; }, on() {}, bindPopup() {} });
     const L = {
         map: () => leafletMap, tileLayer: layer, circleMarker: layer,
@@ -79,6 +92,7 @@ async function page(actualWind = 180, { map = true, headings = [0, 180, null] } 
             const marker = {
                 options, addTo() { return this; }, bindTooltip() {}, bindPopup(popup) { this.popup = popup; },
                 setIcon(icon) { this.options.icon = icon; },
+                getLatLng() { return position; }, openPopup() { this.popupOpen = true; },
             };
             markers.push(marker); return marker;
         },
@@ -91,7 +105,7 @@ async function page(actualWind = 180, { map = true, headings = [0, 180, null] } 
     await load('maps.js'); // Missing-Leaflet fallback must not break wind controls.
     await load('wind.js');
     return {
-        elements, rows, markers,
+        elements, rows, markers, mapPanel, leafletMap, focusButton,
         choose(value) { elements['wind-override'].value = String(value); elements['wind-override'].dispatchEvent({ type: 'change' }); },
         reset() { elements['wind-reset'].dispatchEvent({ type: 'click' }); },
         reload() { window.dispatchEvent({ type: 'pageshow' }); },
@@ -145,6 +159,31 @@ try {
     p = await page(null, { headings: [] });
     p.choose(202.5); assert.match(p.elements['wind-status'].textContent, /south-southwest/);
     p.reset();
+    cases++;
+
+    p = await page(180, { collapsedMap: true });
+    assert.equal(p.mapPanel.open, false);
+    p.mapPanel.open = true;
+    p.mapPanel.dispatchEvent({ type: 'toggle' });
+    assert.equal(p.leafletMap.invalidations, 1);
+    assert.equal(p.leafletMap.fits, 2); // Refit after the initially hidden map gains its size.
+    p.mapPanel.open = false;
+    p.mapPanel.dispatchEvent({ type: 'toggle' });
+    assert.equal(p.leafletMap.invalidations, 1);
+    p.mapPanel.open = true;
+    p.mapPanel.dispatchEvent({ type: 'toggle' });
+    assert.equal(p.leafletMap.fits, 2); // Reopening preserves the user's view.
+    cases++;
+
+    p = await page(180, { collapsedMap: true });
+    p.focusButton.dispatchEvent({ type: 'click' });
+    assert.equal(p.mapPanel.open, true);
+    assert.equal(p.leafletMap.invalidations, 1);
+    assert.deepEqual(p.leafletMap.view, { position: [34, -81], zoom: 17 });
+    assert.equal(p.markers[0].popupOpen, true);
+    assert.equal(p.elements['stand-map'].scrolled, true);
+    p.mapPanel.dispatchEvent({ type: 'toggle' });
+    assert.equal(p.leafletMap.fits, 2); // The later native toggle must not replace the selected view.
     cases++;
     console.log(`Passed ${cases} wind interaction scenarios (grades, rankings, map popups, reset, reload, missing weather/library, and no persistence).`);
 } finally {

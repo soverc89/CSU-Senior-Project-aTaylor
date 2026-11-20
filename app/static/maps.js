@@ -18,6 +18,8 @@
     const latitudeInput = document.getElementById('lat-input');
     const longitudeInput = document.getElementById('lng-input');
     const headingInput = document.getElementById('deg-input');
+    const panel = element.closest('.dashboard-panel');
+    let needsInitialFit = panel && !panel.open;
     const map = L.map(element, { scrollWheelZoom: false }).setView([39.5, -98.35], 4);
     const satellite = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         maxNativeZoom: 19, maxZoom: 20,
@@ -156,6 +158,16 @@
         else map.setView([39.5, -98.35], 4);
     };
     fitLocations();
+    const refreshMapLayout = () => {
+        map.invalidateSize({ pan: false });
+        if (needsInitialFit) {
+            fitLocations();
+            needsInitialFit = false;
+        }
+    };
+    if (panel) panel.addEventListener('toggle', () => {
+        if (panel.open) refreshMapLayout();
+    });
     document.getElementById('fit-map').addEventListener('click', fitLocations);
 
     if (editor) {
@@ -210,6 +222,10 @@
         document.querySelectorAll('[data-focus-stand]').forEach(button => button.addEventListener('click', () => {
             const marker = markers.get(button.dataset.focusStand);
             if (!marker) return;
+            if (panel) {
+                panel.open = true;
+                refreshMapLayout();
+            }
             map.setView(marker.getLatLng(), Math.max(map.getZoom(), 17));
             marker.openPopup();
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });

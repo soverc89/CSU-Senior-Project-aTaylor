@@ -27,6 +27,11 @@
 .property-dashboard-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
 .property-dashboard-layout > .map-panel { margin: 0; }
 .property-dashboard-details { display: grid; gap: 20px; min-width: 0; }
+.dashboard-panel-summary { list-style: none; cursor: default; pointer-events: none; }
+.dashboard-panel-summary::-webkit-details-marker { display: none; }
+.dashboard-panel-summary h3 { margin: 0; }
+.dashboard-panel > .map-heading { padding-bottom: 0; }
+.dashboard-panel-summary:focus-visible { outline: 2px solid #176fc1; outline-offset: -3px; border-radius: 8px; }
 .properties-page { max-width: 800px; min-width: 0; margin: 0 auto; }
 .properties-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
 .properties-table { width: 100%; }
@@ -105,6 +110,15 @@
     .property-dashboard-layout { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 720px) {
+    .property-dashboard-layout, .property-dashboard-details { gap: 12px; }
+    .dashboard-panel-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; pointer-events: auto; }
+    .dashboard-panel-summary::after { content: ''; width: 8px; height: 8px; flex: 0 0 8px; border-right: 2px solid #285c3c; border-bottom: 2px solid #285c3c; transform: rotate(45deg); margin: -4px 3px 0; }
+    .dashboard-panel[open] > .dashboard-panel-summary::after { transform: rotate(225deg); margin-top: 4px; }
+    .dashboard-panel > .map-heading { padding: 14px; }
+    .dashboard-panel .dashboard-panel-body > .map-heading { padding-top: 0; }
+    .wind-panel.dashboard-panel { padding: 0; }
+    .wind-panel > .dashboard-panel-summary { padding: 14px; }
+    .wind-panel > .dashboard-panel-body { padding: 0 14px 14px; }
     .properties-header { flex-wrap: wrap; gap: 10px; }
     .properties-header h2 { margin: 0; font-size: 1.35rem; }
     .properties-header > .pure-button { padding: 8px 10px; font-size: .85rem; white-space: normal; }

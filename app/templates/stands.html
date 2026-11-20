@@ -29,9 +29,10 @@
         </div>
 
         <div class="property-dashboard-layout">
-        <section class="map-panel" aria-labelledby="property-map-title">
+        <details class="map-panel dashboard-panel" open aria-labelledby="property-map-title">
+            <summary class="dashboard-panel-summary map-heading"><h3 id="property-map-title">Property map</h3></summary>
+            <div class="dashboard-panel-body">
             <div class="map-heading">
-                <h3 id="property-map-title">Property map</h3>
                 <p>Place stands on the map and select a saved pin to manage it. The arrow on each pin shows its facing direction.</p>
                 {% if map_data.property.latitude is none %}
                 <p class="map-note"><a href="{{ url_for('main.edit_property', property_id=property.id) }}">Set the property's coordinates</a> to center the map and get local wind readings.</p>
@@ -52,12 +53,14 @@
                 <span><i class="legend-dot" style="background: #176fc1;"></i>Property weather location</span>
             </div>
             <noscript><p class="map-status">Enable JavaScript to use the map. You can still create and edit stands using the forms.</p></noscript>
-        </section>
+            </div>
+        </details>
 
         <div class="property-dashboard-details">
-        <section id="wind-controls" class="wind-panel" aria-labelledby="wind-title"
+        <details id="wind-controls" class="wind-panel dashboard-panel" open aria-labelledby="wind-title"
                  data-actual-wind="{{ wind_degree if wind_degree is not none else '' }}">
-            <h3 id="wind-title">Try a different wind</h3>
+            <summary class="dashboard-panel-summary"><h3 id="wind-title">Try a different wind</h3></summary>
+            <div class="dashboard-panel-body">
             <p>Choose where the wind comes from to preview stand grades. Refreshing restores the property's actual wind.</p>
             <div class="wind-toolbar">
                 <label for="wind-override">Wind coming from</label>
@@ -71,7 +74,8 @@
             </div>
             <p id="wind-status" class="wind-status" role="status">Grades use the property's actual wind.</p>
             <noscript><p>Enable JavaScript to preview a different wind.</p></noscript>
-        </section>
+            </div>
+        </details>
 
         {% if property.stands %}
         <div class="table-scroll">
@@ -192,6 +196,7 @@
 {% endblock content %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='dashboard-panels.js') }}"></script>
 {% include '_map_scripts.html' %}
 <script src="{{ url_for('static', filename='wind.js') }}"></script>
 {% endblock %}
