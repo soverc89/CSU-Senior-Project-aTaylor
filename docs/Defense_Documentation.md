@@ -49,7 +49,7 @@ The `weather.py` module manages the 3-step NWS API process (Points -> Stations -
 - **Figure 2. Property Management.** Shows the form for creating a new property. [INSERT SCREENSHOT HERE]
 - **Figure 3. Stand Creation.** Shows the interface for adding a stand's facing degree. [INSERT SCREENSHOT HERE]
 
-**Source Code Repository:** [Link to GitHub Repository]
+**Source Code Repository:** [Link to GitHub Repository](https://github.com/soverc89/CSU-Senior-Project-aTaylor)
 
 ## 6. Test Plan
 The comprehensive test plan detailing Unit, Integration, Regression, and User-Acceptance tests can be found here:
