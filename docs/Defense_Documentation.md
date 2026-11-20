@@ -44,7 +44,6 @@ The `current_score(wind_degree)` method on the `Stand` model handles the logic. 
 The `weather.py` module manages the 3-step NWS API process (Points -> Stations -> Latest Observation) and implements an in-memory caching dictionary to temporarily store wind data by coordinate to prevent rate limiting.
 
 ### User Interface & Walkthrough
-*(Note: Screenshots to be added prior to final defense)*
 
 - **Figure 1. The Dashboard.** Shows the ranked list of stands, color-coded by their grade. [INSERT SCREENSHOT HERE]
 - **Figure 2. Property Management.** Shows the form for creating a new property. [INSERT SCREENSHOT HERE]

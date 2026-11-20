@@ -37,7 +37,7 @@
 
     <!-- Flash Messages -->
     <main style="padding: 20px;">
-        <div class="pure-u-1" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <div class="pure-u-1" style="max-width: 800px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}

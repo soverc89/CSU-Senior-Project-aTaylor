@@ -1,38 +1,54 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='maps.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="pure-g">
-    <div class="pure-u-1" style="max-width: 800px; margin: 0 auto;">
+    <div class="pure-u-1 properties-page">
 
-        <div
-            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 20px;">
+        <div class="properties-header">
             <h2>My Properties</h2>
             <a href="{{ url_for('main.new_property') }}" class="pure-button pure-button-primary">Add New Property</a>
         </div>
 
         {% if properties %}
-        <table class="pure-table pure-table-horizontal" style="width: 100%;">
+        <table class="pure-table pure-table-horizontal properties-table">
             <thead>
                 <tr>
-                    <th>Property Name</th>
-                    <th>Coordinates</th>
-                    <th>Stands</th>
-                    <th>Actions</th>
+                    <th scope="col">Property Name</th>
+                    <th scope="col" class="property-desktop-column">Coordinates</th>
+                    <th scope="col" class="property-desktop-column">Stands</th>
+                    <th scope="col" class="property-actions-cell" aria-label="Property actions"><span class="property-actions-heading">Actions</span></th>
                 </tr>
             </thead>
             <tbody>
                 {% for property in properties %}
                 <tr>
-                    <td><strong>{{ property.name }}</strong></td>
-                    <td>
+                    <td class="property-name-cell">
+                        <strong><a class="property-name-link" href="{{ url_for('main.stands', property_id=property.id) }}">{{ property.name }}</a></strong>
+                        <div class="property-mobile-details">
+                            <span class="property-stand-count">{{ property.stands|length }} {{ 'stand' if property.stands|length == 1 else 'stands' }}</span>
+                            <span class="property-mobile-coordinates">
+                                {% if property.latitude is not none and property.longitude is not none %}
+                                <span>{{ '%.6f'|format(property.latitude) }},</span> <span>{{ '%.6f'|format(property.longitude) }}</span>
+                                {% else %}
+                                Location not set
+                                {% endif %}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="property-desktop-column">
                         {% if property.latitude is not none and property.longitude is not none %}
                         {{ property.latitude }}, {{ property.longitude }}
                         {% else %}
                         <em>Not Set</em>
                         {% endif %}
                     </td>
-                    <td>{{ property.stands|length }} Stands</td>
-                    <td>
+                    <td class="property-desktop-column">{{ property.stands|length }} Stands</td>
+                    <td class="property-actions-cell">
+                        <div class="property-desktop-actions">
                         <a href="{{ url_for('main.stands', property_id=property.id) }}" class="pure-button button-small"
                             style="background: #17a2b8; color: white;">View Stands</a>
                         <a href="{{ url_for('main.edit_property', property_id=property.id) }}"
@@ -45,6 +61,21 @@
                                 style="background: #dc3545; color: white;"
                                 onclick="return confirm('Are you sure you want to delete this property? All associated stands will also be deleted.');">Delete</button>
                         </form>
+                        </div>
+                        <details class="property-actions">
+                            <summary aria-label="Actions for {{ property.name }}">
+                                <span aria-hidden="true">⋮</span>
+                            </summary>
+                            <div class="property-actions-menu">
+                                <a href="{{ url_for('main.stands', property_id=property.id) }}">View Stands</a>
+                                <a href="{{ url_for('main.edit_property', property_id=property.id) }}">Edit</a>
+                                <form action="{{ url_for('main.delete_property', property_id=property.id) }}" method="POST">
+                                    {{ delete_form.hidden_tag() }}
+                                    <button type="submit" class="property-delete-action"
+                                            onclick="return confirm('Are you sure you want to delete this property? All associated stands will also be deleted.');">Delete</button>
+                                </form>
+                            </div>
+                        </details>
                     </td>
                 </tr>
                 {% endfor %}

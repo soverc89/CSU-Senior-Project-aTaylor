@@ -39,4 +39,3 @@ Map-based stand creation received a 5/5 ease-of-use rating. Feedback indicated t
 The findings support perceived usability of the core workflows. See [Test Results](Test_Results.md#user-questionnaire-results) for the questionnaire summary and proposed future enhancements.
 
 ---
-*Presenter note: The questionnaire summary is recorded in the Test Results report and reflected in the Defense Documentation and presentation outline. Keep reported usability findings distinct from functional test results.*

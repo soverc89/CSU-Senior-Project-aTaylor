@@ -26,10 +26,10 @@ def finite_coordinate(form, field):
 
 
 class CoordinateForm(FlaskForm):
-    latitude = FloatField('Latitude (Optional)', validators=[
+    latitude = FloatField('Latitude', validators=[
         Optional(), finite_coordinate, NumberRange(min=-90, max=90),
     ])
-    longitude = FloatField('Longitude (Optional)', validators=[
+    longitude = FloatField('Longitude', validators=[
         Optional(), finite_coordinate, NumberRange(min=-180, max=180),
     ])
 
