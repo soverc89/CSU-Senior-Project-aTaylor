@@ -51,8 +51,10 @@ The `weather.py` module manages the 3-step NWS API process (Points -> Stations -
 ![screenshot](/media/new_property.png)
 - **Figure 2. Property Management.** Shows the form for creating a new property.
 
-![Screenshot 1](/media/dashboard.png) ![Screenshot 2](/media/map.png)
+![Screenshot 1](/media/map.png) ![Screenshot 2](/media/dashboard.png)
 - **Figure 3. The Dashboard.** Shows the ranked list of stands, color-coded by their grade.
+
+![screenshot](/media/new_stand2.png)
 - **Figure 4. Stand Creation.** Shows the interface for adding a stand's facing degree.
 
 **Source Code Repository:** [Link to GitHub Repository](https://github.com/soverc89/CSU-Senior-Project-aTaylor)
