@@ -253,9 +253,3 @@ Risks
 -   API Rate Limit
 - Mitigation: API requests will be based on user need and on a 6-12 hour timer.
 - Contingency: Rely on cached weather data
-
-
-Appendix
---------
-
-(Include any information that is helpful to reference.)
